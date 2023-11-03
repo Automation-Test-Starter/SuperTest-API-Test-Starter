@@ -368,4 +368,5 @@ npm run test
 - 查看测试报告
 
 > 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
-> 
+
+![BseOQ8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png)
