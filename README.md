@@ -25,6 +25,18 @@
       - [测试报告](#测试报告)
         - [命令行测试报告](#命令行测试报告)
         - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
+    - [Jest 版本](#jest-版本)
+      - [新建 Jest demo项目文件夹](#新建-jest-demo项目文件夹)
+      - [Jest demo 项目初始化](#jest-demo-项目初始化)
+      - [Jest demo 安装依赖](#jest-demo-安装依赖)
+      - [新建Jest demo项目的测试文件及测试用例](#新建jest-demo项目的测试文件及测试用例)
+      - [编写Jest demo测试用例](#编写jest-demo测试用例)
+      - [配置Jest配置文件](#配置jest配置文件)
+      - [调整Jest测试脚本](#调整jest测试脚本)
+      - [运行Jest测试用例](#运行jest测试用例)
+      - [Jest测试报告](#jest测试报告)
+        - [Jest命令行测试报告](#jest命令行测试报告)
+        - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
 
 ## 介绍
 
@@ -370,3 +382,173 @@ npm run test
 > 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
 
 ![BseOQ8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png)
+
+### Jest 版本
+
+可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+
+#### 新建 Jest demo项目文件夹
+
+```bash
+mkdir SuperTest-Jest-demo
+```
+
+#### Jest demo 项目初始化
+
+```bash
+// 进入项目文件夹下
+cd SuperTest-Mocha-demo
+// nodejs 项目初始化
+npm init -y
+```
+
+#### Jest demo 安装依赖
+
+```bash
+// 安装 supertest
+npm install supertest --save-dev
+// 安装 Jest测试框架
+npm install jest --save-dev
+```
+
+#### 新建Jest demo项目的测试文件及测试用例
+
+```bash
+// 新建测试文件夹
+mkdir Specs
+// 新建测试用例文件
+cd Specs
+touch test.spec.js
+```
+
+#### 编写Jest demo测试用例
+
+> 测试接口可参考项目中 demoAPI.md文件
+
+```javascript
+const request = require('supertest');
+
+// Test Suite
+describe('Verify that the Get and POST API returns correctly', () => {
+    // Test case 1
+    it('Verify that the GET API returns correctly', async () => {
+        const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint
+            .get('/posts/1') // API endpoint
+            .send() // request body
+            .expect(200); // use supertest's expect to verify that the status code is 200
+        // user jest's expect to verify the response body
+        expect(res.status).toBe(200); // Verify that the status code is 200
+        expect(res.body.id).toEqual(1); // Verify that the id is 1
+        expect(res.body.userId).toEqual(1); // Verify that the userId is 1
+        expect(res.body.title).toEqual("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+        expect(res.body.body).toEqual("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto");
+    });
+
+    // Test case 2
+    it('Verify that the POST API returns correctly', async() =>{
+        const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint
+            .post('/posts') // API endpoint
+            .send({
+                "title": "foo",
+                "body": "bar",
+                "userId": 1
+            }) // request body
+            .expect(201); // use supertest's expect to verify that the status code is 201
+        // user jest's expect to verify the response body
+        expect(res.statusCode).toBe(201);
+        expect(res.body.id).toEqual(101);
+        expect(res.body.userId).toEqual(1);
+        expect(res.body.title).toEqual("foo");
+        expect(res.body.body).toEqual("bar");
+    });
+}); 
+```
+
+#### 配置Jest配置文件
+
+- 新建配置文件
+
+```bash
+// 项目根目录下新建配置文件
+touch jest.config.js
+```
+
+- 更新配置文件
+
+```javascript
+// Desc: Jest configuration file
+module.exports = {
+    // 测试文件的匹配规则
+    testMatch: ['**/Specs/*.spec.js'],
+};
+```
+
+#### 调整Jest测试脚本
+
+在 package.json 文件中添加测试脚本
+
+```json
+"scripts": {
+    "test": "jest"
+  },
+```
+
+#### 运行Jest测试用例
+
+```bash
+// 运行测试用例
+npm run test
+```
+
+#### Jest测试报告
+
+##### Jest命令行测试报告
+
+![ItJf6N](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png)
+
+##### 集成 jest-html-reporters 测试报告
+
+- 安装 jest-html-reporters
+
+```bash
+npm install --save-dev jest-html-reporters
+```
+
+- 更新Jest配置文件
+
+> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+
+```javascript
+// Desc: Jest configuration file
+module.exports = {
+    // 测试文件的匹配规则
+    testMatch: ['**/Specs/*.spec.js'],
+    // 测试报告生成器
+    reporters: [
+        'default',
+        [
+            'jest-html-reporters',
+            {
+                publicPath: './Report', // 报告生成路径
+                filename: 'report.html', // 报告名称
+                pageTitle: 'SuperTest and Jest API Test Report', // 报告标题
+                overwrite: true, // 报告文件是否覆盖
+                expand: true, // 展开所有测试套件
+            },
+        ],
+    ],
+};
+```
+
+- 运行Jest测试用例
+
+```bash
+// 运行测试用例
+npm run test
+```
+
+- 查看测试报告
+
+> 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
+
+![12ZreT](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png)
