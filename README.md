@@ -9,6 +9,7 @@
     - [SuperTest介绍](#supertest介绍)
     - [Jest 介绍](#jest-介绍)
     - [Mocha 介绍](#mocha-介绍)
+    - [CHAI 简介](#chai-简介)
   - [项目依赖](#项目依赖)
   - [项目文件结构](#项目文件结构)
   - [从 0 到 1 搭建 SuperTest 接口自动化测试项目](#从-0-到-1-搭建-supertest-接口自动化测试项目)
@@ -18,6 +19,12 @@
       - [安装依赖](#安装依赖)
       - [新建测试文件及测试用例](#新建测试文件及测试用例)
       - [编写测试用例](#编写测试用例)
+      - [配置mocha配置文件](#配置mocha配置文件)
+      - [调整测试脚本](#调整测试脚本)
+      - [运行测试用例](#运行测试用例)
+      - [测试报告](#测试报告)
+        - [命令行测试报告](#命令行测试报告)
+        - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
 
 ## 介绍
 
@@ -44,6 +51,20 @@
 
 > 备注：Supertest不止可以用来做API测试，也可以用来做单元测试和集成测试
 
+代码示例：
+
+```javascript
+// import supertest
+const request = require('supertest');
+
+request({URL}) // request(url) or request(app)
+.get() or .put() or.post() // http methods
+.set() // http options
+.send() // http body
+.expect() // http assertions
+.end() // end the request
+```
+
 ### Jest 介绍
 
 Jest 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScript 应用程序的单元测试、集成测试和端到端测试。它的目标是提供简单、快速和易于使用的测试工具，适用于各种 JavaScript 应用程序，包括前端和后端应用程序。
@@ -63,6 +84,21 @@ Jest通常与其他工具如Babel（用于转译 JavaScript）、Enzyme（用于
 
 官方文档：<https://jestjs.io/docs/zh-Hans/getting-started>
 
+代码示例：
+
+```javascript
+// import jest
+const jest = require('jest');
+
+describe(): // test scenarios
+
+it(): // detailed test case, it() is in the describe()
+
+before(): // this action is before all test cases
+
+after(): // this action is after all test cases
+```
+
 ### Mocha 介绍
 
 Mocha 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScript 应用程序的各种测试，包括单元测试、集成测试和端到端测试。Mocha 提供了灵活性和可扩展性，使开发人员能够轻松地定制测试套件以满足其项目的需求。
@@ -81,6 +117,56 @@ Mocha 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScr
 Mocha 的灵活性和可扩展性使其成为一个受欢迎的测试框架，适用于各种 JavaScript 项目，包括前端和后端应用程序。开发人员可以根据自己的需求和喜好选择测试工具、断言库和其他扩展，以满足项目的要求。无论你是在编写浏览器端代码还是服务器端代码，Mocha 都是一个强大的测试工具，可帮助你确保代码质量和可靠性。
 
 官方文档：<https://mochajs.org/>
+
+代码示例：
+
+```javascript
+// import mocha
+const mocha = require('mocha');
+
+describe(): // test scenarios
+
+it(): // detailed test case, it() is in the describe()
+
+before(): // this action is before all test cases
+
+after(): // this action is after all test cases
+```
+
+### CHAI 简介
+
+Chai 是一个 JavaScript 断言库，用于编写和运行测试用例时进行断言和期望值的验证。它是一个流行的测试工具，通常与测试框架（如 Mocha、Jest 等）一起使用，以帮助开发者编写和执行各种类型的测试，包括单元测试和集成测试。
+
+以下是一些 Chai 的主要特点和用途：
+
+- 可读性强的断言语法：Chai 提供了一个易于阅读和编写的断言语法，使测试用例更易于理解。它支持自然语言的断言风格，例如 expect(foo).to.be.a('string') 或 expect(bar).to.equal(42)。
+- 多种断言风格：Chai 提供了多种不同的断言风格，以适应不同开发者的偏好。主要的风格包括 BDD（Behavior-Driven Development）风格、TDD（Test-Driven Development）风格和 assert 风格。
+- 插件扩展：Chai 可以通过插件进行扩展，以支持更多的断言类型和功能。这使得 Chai 可以满足各种测试需求，包括异步测试、HTTP 请求测试等。
+- 易于集成：Chai 可以轻松集成到各种测试框架中，例如 Mocha、Jest、Jasmine 等。这使得它成为编写测试用例的强大工具。
+- 支持链式断言：Chai 允许你对多个断言进行链式调用，以便更容易进行复杂的测试和验证。
+
+官方文档：<https://www.chaijs.com/>
+
+代码示例：
+
+```javascript
+// import chai
+const chai = require('chai');
+const expect = chai.expect;
+
+// demo assertions
+.expect(<actual result>).to.{assert}(<expected result>) // Asserts that the target is strictly equal to value.
+
+.expect(‘hello').to.equal('hello'); // Asserts that the target is strictly equal to value.
+
+.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // Asserts that the target is not strictly equal to value.
+
+.expect('foobar').to.contain('foo'); // Asserts that the target contains the given substring.
+
+.expect(foo).to.exist; // Asserts that the target is neither null nor undefined.
+
+.expect(5).to.be.at.most(5); // Asserts that the target is less than or equal to value.
+```
 
 ## 项目依赖
 
@@ -157,7 +243,129 @@ touch test.spec.js
 
 > 测试接口可参考项目中 demoAPI.md文件
 
-```typescript
-// 引入 supertest
-const request = require('supertest');
+```javascript
+// Test: test.spec.js
+const request = require('supertest'); // import supertest
+const chai = require('chai'); // import chai
+const expect = require('chai').expect; // import expect
 
+// Test Suite
+describe('Verify that the Get and POST API returns correctly', function(){
+        // Test case 1
+        it('Verify that the GET API returns correctly', function(done){
+            request('https://jsonplaceholder.typicode.com') // Test endpoint
+                .get('/posts/1') // API endpoint
+                .expect(200) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(1  )
+                    expect(res.body.userId).to.equal(1)
+                    expect(res.body.title).to.equal("sunt aut facere repellat provident occaecati excepturi optio reprehenderit")
+                    expect(res.body.body).to.equal("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
+                }) // expected response body
+                .end(done) // end the test case
+
+        });
+        // Test case 2
+        it('Verify that the POST API returns correctly', function(done){
+            request('https://jsonplaceholder.typicode.com') // Test endpoint
+                .post('/posts') // API endpoint
+                .send({
+                    "title": "foo",
+                    "body": "bar",
+                    "userId": 1
+                }) // request body
+                .expect(201) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(101  )
+                    expect(res.body.userId).to.equal(1)
+                    expect(res.body.title).to.equal("foo")
+                    expect(res.body.body).to.equal("bar")
+                }) // expected response body
+                .end(done) // end the test case
+        });
+});
+```
+
+#### 配置mocha配置文件
+
+- 新建配置文件
+
+```bash
+// 项目根目录下新建配置文件
+touch .mocharc.js
+```
+
+- 更新配置文件
+
+```javascript
+// mocha config
+module.exports = {
+    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
+    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+};
+```
+
+#### 调整测试脚本
+
+在 package.json 文件中添加测试脚本
+
+```json
+"scripts": {
+    "test": "mocha"
+  },
+```
+
+#### 运行测试用例
+
+```bash
+// 运行测试用例
+npm run test
+```
+
+#### 测试报告
+
+##### 命令行测试报告
+
+![RbdVs7](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png)
+
+##### 集成 mochawesome 测试报告
+
+- 安装 mochawesome
+
+```bash
+npm install --save-dev mochawesome
+```
+
+- 更新mocha配置文件
+
+> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+
+```javascript
+// mocha config
+module.exports = {
+    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
+    reporter: 'mochawesome', // 使用 mochawesome 报告生成器
+    'reporter-option': [
+        'reportDir=Report', // 报告生成路径
+        'reportFilename=[status]_[datetime]-[name]-report', //报告名称
+        'html=true', // 生成 html 格式报告
+        'json=false', // 不生成 json 格式报告
+        'overwrite=false', // 不覆盖已经存在的报告
+        'timestamp=longDate', // 给报告添加时间戳
+
+    ], // 传递给报告生成器的参数
+    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+};
+```
+
+- 运行测试用例
+
+```bash
+// 运行测试用例
+npm run test
+```
+
+- 查看测试报告
+
+> 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
+> 
