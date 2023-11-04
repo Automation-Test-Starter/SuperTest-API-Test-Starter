@@ -37,6 +37,11 @@
       - [Jest测试报告](#jest测试报告)
         - [Jest命令行测试报告](#jest命令行测试报告)
         - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
+  - [进阶用法](#进阶用法)
+    - [持续集成](#持续集成)
+      - [接入 github action](#接入-github-action)
+        - [Mocha 版本接入 github action](#mocha-版本接入-github-action)
+        - [Jest 版本接入 github action](#jest-版本接入-github-action)
 
 ## 介绍
 
@@ -552,3 +557,133 @@ npm run test
 > 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
 
 ![12ZreT](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png)
+
+## 进阶用法
+
+### 持续集成
+
+#### 接入 github action
+
+以 github action 为例，其他 CI 工具类似
+
+##### Mocha 版本接入 github action
+
+可参考 demo：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+
+创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
+
+创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 mocha.yml。
+
+编辑 mocha.yml 文件：将以下内容复制到文件中
+  
+```yaml
+name: RUN SuperTest API Test CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  RUN-SuperTest-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Installation of related packages
+      run: npm ci
+      
+    - name: RUN SuperTest API Testing
+      run: npm test
+      
+    - name: Archive SuperTest mochawesome test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-mochawesome-test-report
+        path: Report
+
+    - name: Upload SuperTest mochawesome report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-mochawesome-test-report
+        path: Report
+```
+
+- 提交代码：将 mocha.yml 文件添加到仓库中并提交。
+- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN SuperTest API Test CI 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
+
+![dgfyaS](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dgfyaS.png)
+
+##### Jest 版本接入 github action
+
+可参考 demo：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+
+创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
+
+创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 jest.yml。
+
+编辑 jest.yml 文件：将以下内容复制到文件中
+  
+```yaml
+name: RUN SuperTest API Test CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  RUN-SuperTest-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Installation of related packages
+        run: npm ci
+
+      - name: RUN SuperTest API Testing
+        run: npm test
+
+      - name: Archive SuperTest test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: SuperTest-test-report
+          path: Report
+
+      - name: Upload SuperTest  report to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: SuperTest-test-report
+          path: Report
+```
+
+- 提交代码：将 jest.yml 文件添加到仓库中并提交。
+- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-SuperTest-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
+
+![fqXy8o](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fqXy8o.png)
