@@ -12,31 +12,31 @@ An introductory QuickStart project document on API automation testing with Super
     - [Introduction of CHAI](#introduction-of-chai)
   - [Project dependencies](#project-dependencies)
   - [Project Structure](#project-structure)
-  - [从 0 到 1 搭建 SuperTest 接口自动化测试项目](#从-0-到-1-搭建-supertest-接口自动化测试项目)
-    - [Mocha 版本](#mocha-版本)
-      - [新建项目文件夹](#新建项目文件夹)
-      - [项目初始化](#项目初始化)
-      - [安装依赖](#安装依赖)
-      - [新建测试文件及测试用例](#新建测试文件及测试用例)
-      - [编写测试用例](#编写测试用例)
-      - [配置 mocha 配置文件](#配置-mocha-配置文件)
-      - [调整测试脚本](#调整测试脚本)
-      - [运行测试用例](#运行测试用例)
-      - [测试报告](#测试报告)
-        - [命令行测试报告](#命令行测试报告)
-        - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
-    - [Jest 版本](#jest-版本)
-      - [新建 Jest demo 项目文件夹](#新建-jest-demo-项目文件夹)
-      - [Jest demo 项目初始化](#jest-demo-项目初始化)
-      - [Jest demo 安装依赖](#jest-demo-安装依赖)
-      - [新建 Jest demo 项目的测试文件及测试用例](#新建-jest-demo-项目的测试文件及测试用例)
-      - [编写 Jest demo 测试用例](#编写-jest-demo-测试用例)
-      - [配置 Jest 配置文件](#配置-jest-配置文件)
-      - [调整 Jest 测试脚本](#调整-jest-测试脚本)
-      - [运行 Jest 测试用例](#运行-jest-测试用例)
-      - [Jest 测试报告](#jest-测试报告)
-        - [Jest 命令行测试报告](#jest-命令行测试报告)
-        - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
+  - [Build a SuperTest interface automation test project from 0 to 1](#build-a-supertest-interface-automation-test-project-from-0-to-1)
+    - [Mocha version](#mocha-version)
+      - [Create a new project folder](#create-a-new-project-folder)
+      - [Project Initialization](#project-initialization)
+      - [Install dependencies](#install-dependencies)
+      - [Create new test folder and test cases](#create-new-test-folder-and-test-cases)
+      - [Writing Test Cases](#writing-test-cases)
+      - [Configuring mocha config files](#configuring-mocha-config-files)
+      - [Updating test scripts for mocha](#updating-test-scripts-for-mocha)
+      - [Running test cases](#running-test-cases)
+      - [Test Report](#test-report)
+        - [Terminal Test Report](#terminal-test-report)
+        - [Integrated mochawesome test report](#integrated-mochawesome-test-report)
+    - [Jest version](#jest-version)
+      - [Create a new jest project folder](#create-a-new-jest-project-folder)
+      - [Jest demo project initialization](#jest-demo-project-initialization)
+      - [Jest demo install dependencies](#jest-demo-install-dependencies)
+      - [Create new Jest demo project test folder and test cases](#create-new-jest-demo-project-test-folder-and-test-cases)
+      - [Writing Jest demo Test Cases](#writing-jest-demo-test-cases)
+      - [Configuring Jest config files](#configuring-jest-config-files)
+      - [Adapting Jest Test Scripts](#adapting-jest-test-scripts)
+      - [Runing test case](#runing-test-case)
+      - [Jest test report](#jest-test-report)
+        - [Jest terminal Test Report](#jest-terminal-test-report)
+        - [Integrating jest-html-reporters test reports](#integrating-jest-html-reporters-test-reports)
   - [进阶用法](#进阶用法)
     - [持续集成](#持续集成)
       - [接入 github action](#接入-github-action)
@@ -214,53 +214,53 @@ SuperTest-Jest-demo
     └── ...
 ```
 
-## 从 0 到 1 搭建 SuperTest 接口自动化测试项目
+## Build a SuperTest interface automation test project from 0 to 1
 
-下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。
+The following is a demo of building a SuperTest interface automation test project from 0 to 1, using either Jest or Mocha as the test framework.
 
-### Mocha 版本
+### Mocha version
 
-可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+You can refer to the demo project at <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>.
 
-#### 新建项目文件夹
+#### Create a new project folder
 
 ```bash
 mkdir SuperTest-Mocha-demo
 ```
 
-#### 项目初始化
+#### Project Initialization
 
 ```bash
-// 进入项目文件夹下
+// enter the project folder
 cd SuperTest-Mocha-demo
-// nodejs 项目初始化
+// nodejs project initialization
 npm init -y
 ```
 
-#### 安装依赖
+#### Install dependencies
 
 ```bash
-// 安装 supertest
+// install supertest library
 npm install supertest --save-dev
-// 安装 mocha测试框架
+// install mocha test framework
 npm install mocha --save-dev
-// 安装 chai断言库
+// install chai assertion library
 npm install chai --save-dev
 ```
 
-#### 新建测试文件及测试用例
+#### Create new test folder and test cases
 
 ```bash
-// 新建测试文件夹
+// create test folder
 mkdir Specs
-// 新建测试用例文件
+// create test case file
 cd Specs
 touch test.spec.js
 ```
 
-#### 编写测试用例
+#### Writing Test Cases
 
-> 测试接口可参考项目中 demoAPI.md 文件
+> The test API can be found in the demoAPI.md file in the project.
 
 ```javascript
 // Test: test.spec.js
@@ -305,28 +305,28 @@ describe('Verify that the Get and POST API returns correctly', function(){
 });
 ```
 
-#### 配置 mocha 配置文件
+#### Configuring mocha config files
 
-- 新建配置文件
+- Create a new mocha configuration file
 
 ```bash
-// 项目根目录下新建配置文件
+// create configuration file in the project root directory
 touch .mocharc.js
 ```
 
-- 更新配置文件
+- Updating configuration files
 
 ```javascript
 // mocha config
 module.exports = {
-    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
-    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+    timeout: 5000, // set the default timeout for test cases (milliseconds)
+    spec: ['Specs/**/*.js'], // specify the location of the test file
 };
 ```
 
-#### 调整测试脚本
+#### Updating test scripts for mocha
 
-在 package.json 文件中添加测试脚本
+Add test scripts to the package.json file
 
 ```json
 "scripts": {
@@ -334,103 +334,103 @@ module.exports = {
   },
 ```
 
-#### 运行测试用例
+#### Running test cases
 
 ```bash
-// 运行测试用例
+// run test cases
 npm run test
 ```
 
-#### 测试报告
+#### Test Report
 
-##### 命令行测试报告
+##### Terminal Test Report
 
 ![RbdVs7](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png)
 
-##### 集成 mochawesome 测试报告
+##### Integrated mochawesome test report
 
-- 安装 mochawesome
+- Install mochawesome library
 
 ```bash
 npm install --save-dev mochawesome
 ```
 
-- 更新 mocha 配置文件
+- Updating mocha configuration files
 
-> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+> You can refer to the demo project at<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
 ```javascript
 // mocha config
 module.exports = {
-    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
-    reporter: 'mochawesome', // 使用 mochawesome 报告生成器
+    timeout: 5000, // Set the default timeout for test cases (milliseconds)
+    reporter: 'mochawesome', // Use mochawesome as the test report generator
     'reporter-option': [
-        'reportDir=Report', // 报告生成路径
-        'reportFilename=[status]_[datetime]-[name]-report', //报告名称
-        'html=true', // 生成 html 格式报告
-        'json=false', // 不生成 json 格式报告
-        'overwrite=false', // 不覆盖已经存在的报告
-        'timestamp=longDate', // 给报告添加时间戳
+        'reportDir=Report', // Report directory
+        'reportFilename=[status]_[datetime]-[name]-report', //Report file name
+        'html=true', // enable html report
+        'json=false', // disable json report
+        'overwrite=false', // disable report file overwrite
+        'timestamp=longDate', // add timestamp to report file name
 
-    ], // 传递给报告生成器的参数
-    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+    ], // mochawesome report generator options
+    spec: ['Specs/**/*.js'], // Specify the location of the test file
 };
 ```
 
-- 运行测试用例
+- Running test cases
 
 ```bash
-// 运行测试用例
+// Run test cases
 npm run test
 ```
 
-- 查看测试报告
+- View test report
 
-> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
+> Test report folder: Report, click to open the latest html report file with your browser
 
 ![BseOQ8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png)
 
-### Jest 版本
+### Jest version
 
-可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+ You can refer to the demo project at<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
-#### 新建 Jest demo 项目文件夹
+#### Create a new jest project folder
 
 ```bash
 mkdir SuperTest-Jest-demo
 ```
 
-#### Jest demo 项目初始化
+#### Jest demo project initialization
 
 ```bash
-// 进入项目文件夹下
+// enter the project folder
 cd SuperTest-Mocha-demo
-// nodejs 项目初始化
+// nodejs project initialization
 npm init -y
 ```
 
-#### Jest demo 安装依赖
+#### Jest demo install dependencies
 
 ```bash
-// 安装 supertest
+// install supertest library
 npm install supertest --save-dev
-// 安装 Jest测试框架
+// install jest test framework
 npm install jest --save-dev
 ```
 
-#### 新建 Jest demo 项目的测试文件及测试用例
+#### Create new Jest demo project test folder and test cases
 
 ```bash
-// 新建测试文件夹
+// create test folder
 mkdir Specs
-// 新建测试用例文件
+// enter test folder and create test case file
 cd Specs
 touch test.spec.js
 ```
 
-#### 编写 Jest demo 测试用例
+#### Writing Jest demo Test Cases
 
-> 测试接口可参考项目中 demoAPI.md 文件
+> The test API can be found in the demoAPI.md file in the project.
 
 ```javascript
 const request = require('supertest');
@@ -471,28 +471,28 @@ describe('Verify that the Get and POST API returns correctly', () => {
 }); 
 ```
 
-#### 配置 Jest 配置文件
+#### Configuring Jest config files
 
-- 新建配置文件
+- Creating a new configuration file
 
 ```bash
-// 项目根目录下新建配置文件
+// Create a new configuration file in the project root directory
 touch jest.config.js
 ```
 
-- 更新配置文件
+- Updating configuration files
 
 ```javascript
 // Desc: Jest configuration file
 module.exports = {
-    // 测试文件的匹配规则
+    // Specify the location of the test file
     testMatch: ['**/Specs/*.spec.js'],
 };
 ```
 
-#### 调整 Jest 测试脚本
+#### Adapting Jest Test Scripts
 
-在 package.json 文件中添加测试脚本
+Add the test script to the package.json file
 
 ```json
 "scripts": {
@@ -500,63 +500,63 @@ module.exports = {
   },
 ```
 
-#### 运行 Jest 测试用例
+#### Runing test case
 
 ```bash
-// 运行测试用例
+// run test case
 npm run test
 ```
 
-#### Jest 测试报告
+#### Jest test report
 
-##### Jest 命令行测试报告
+##### Jest terminal Test Report
 
 ![ItJf6N](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png)
 
-##### 集成 jest-html-reporters 测试报告
+##### Integrating jest-html-reporters test reports
 
-- 安装 jest-html-reporters
+- Install jest-html-reporters library
 
 ```bash
 npm install --save-dev jest-html-reporters
 ```
 
-- 更新 Jest 配置文件
+- Updating jest configuration files
 
-> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+> You can refer to the demo project at<ttps://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
 ```javascript
 // Desc: Jest configuration file
 module.exports = {
-    // 测试文件的匹配规则
+    // specify the location of the test file
     testMatch: ['**/Specs/*.spec.js'],
-    // 测试报告生成器
+    // test report generator
     reporters: [
         'default',
         [
             'jest-html-reporters',
             {
-                publicPath: './Report', // 报告生成路径
-                filename: 'report.html', // 报告名称
-                pageTitle: 'SuperTest and Jest API Test Report', // 报告标题
-                overwrite: true, // 报告文件是否覆盖
-                expand: true, // 展开所有测试套件
+                publicPath: './Report', // report directory
+                filename: 'report.html', // report file name
+                pageTitle: 'SuperTest and Jest API Test Report', // report title
+                overwrite: true, // enable report file overwrite
+                expand: true, // enable report file expansion
             },
         ],
     ],
 };
 ```
 
-- 运行 Jest 测试用例
+- Running test cases
 
 ```bash
-// 运行测试用例
+// run test case
 npm run test
 ```
 
-- 查看测试报告
+- View test report
 
-> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
+> Test report folder: Report, click on the browser to open the latest html report file
 
 ![12ZreT](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png)
 
