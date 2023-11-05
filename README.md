@@ -71,15 +71,15 @@
 代码示例：
 
 ```javascript
-// import supertest
+// 导入 supertest
 const request = require('supertest');
 
-request({URL}) // request(url) or request(app)
-.get() or .put() or.post() // http methods
-.set() // http options
-.send() // http body
-.expect() // http assertions
-.end() // end the request
+request({URL}) // 请求(url) 或 请求(app)
+.get() or .put() or.post() // http method
+.set() // http 选项
+.send() //  请求的 body
+.expect() //  断言
+.end() // 结束请求
 ```
 
 ### Jest 介绍
@@ -104,16 +104,16 @@ Jest通常与其他工具如Babel（用于转译 JavaScript）、Enzyme（用于
 代码示例：
 
 ```javascript
-// import jest
+// 导入 jest
 const jest = require('jest');
 
-describe(): // test scenarios
+describe(): // 测试场景
 
-it(): // detailed test case, it() is in the describe()
+it(): // 测试用例, it() 在 describe()里面
 
-before(): // this action is before all test cases
+before(): // 这个动作在所有测试用例之前执行
 
-after(): // this action is after all test cases
+after(): // 这个动作在所有测试用例之后执行
 ```
 
 ### Mocha 介绍
@@ -138,16 +138,16 @@ Mocha 的灵活性和可扩展性使其成为一个受欢迎的测试框架，�
 代码示例：
 
 ```javascript
-// import mocha
+// 导入 mocha
 const mocha = require('mocha');
 
-describe(): // test scenarios
+describe(): // 测试场景
 
-it(): // detailed test case, it() is in the describe()
+it(): // 测试用例, it() 在 describe()里面
 
-before(): // this action is before all test cases
+before(): // 这个动作在所有测试用例之前执行
 
-after(): // this action is after all test cases
+after(): // 这个动作在所有测试用例之后执行
 ```
 
 ### CHAI 简介
@@ -167,22 +167,22 @@ Chai 是一个 JavaScript 断言库，用于编写和运行测试用例时进行
 代码示例：
 
 ```javascript
-// import chai
+// 导入 chai
 const chai = require('chai');
 const expect = chai.expect;
 
-// demo assertions
-.expect(<actual result>).to.{assert}(<expected result>) // Asserts that the target is strictly equal to value.
+// demo 断言
+.expect(<actual result>).to.{assert}(<expected result>) // 断言目标严格等于值
 
-.expect(‘hello').to.equal('hello'); // Asserts that the target is strictly equal to value.
+.expect(‘hello').to.equal('hello'); // 断言目标严格等于值
 
-.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // Asserts that the target is not strictly equal to value.
+.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // 断言目标值不严格等于值。
 
-.expect('foobar').to.contain('foo'); // Asserts that the target contains the given substring.
+.expect('foobar').to.contain('foo'); // 断言目标字符串包含给定的子字符串。
 
-.expect(foo).to.exist; // Asserts that the target is neither null nor undefined.
+.expect(foo).to.exist; // 断言目标既不是 null 也不是未定义。
 
-.expect(5).to.be.at.most(5); // Asserts that the target is less than or equal to value.
+.expect(5).to.be.at.most(5); // 断言目标值小于或等于值。
 ```
 
 ## 项目依赖
