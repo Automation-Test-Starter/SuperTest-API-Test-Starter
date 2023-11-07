@@ -1,4 +1,8 @@
+<!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD033 -->
 <div align="right"><strong>🇨🇳中文</a></strong>  | <strong><a href="./README_EN.md">🇬🇧English</strong></div>
+<!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD033 -->
 
 # SuperTest 接口自动化测试快速启动项目
 
@@ -6,7 +10,7 @@
 
 - [SuperTest 接口自动化测试快速启动项目](#supertest-接口自动化测试快速启动项目)
   - [介绍](#介绍)
-    - [SuperTest介绍](#supertest介绍)
+    - [SuperTest 介绍](#supertest-介绍)
     - [Jest 介绍](#jest-介绍)
     - [Mocha 介绍](#mocha-介绍)
     - [CHAI 简介](#chai-简介)
@@ -19,37 +23,56 @@
       - [安装依赖](#安装依赖)
       - [新建测试文件及测试用例](#新建测试文件及测试用例)
       - [编写测试用例](#编写测试用例)
-      - [配置mocha配置文件](#配置mocha配置文件)
+      - [配置 mocha 配置文件](#配置-mocha-配置文件)
       - [调整测试脚本](#调整测试脚本)
       - [运行测试用例](#运行测试用例)
       - [测试报告](#测试报告)
         - [命令行测试报告](#命令行测试报告)
         - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
     - [Jest 版本](#jest-版本)
-      - [新建 Jest demo项目文件夹](#新建-jest-demo项目文件夹)
+      - [新建 Jest demo 项目文件夹](#新建-jest-demo-项目文件夹)
       - [Jest demo 项目初始化](#jest-demo-项目初始化)
       - [Jest demo 安装依赖](#jest-demo-安装依赖)
-      - [新建Jest demo项目的测试文件及测试用例](#新建jest-demo项目的测试文件及测试用例)
-      - [编写Jest demo测试用例](#编写jest-demo测试用例)
-      - [配置Jest配置文件](#配置jest配置文件)
-      - [调整Jest测试脚本](#调整jest测试脚本)
-      - [运行Jest测试用例](#运行jest测试用例)
-      - [Jest测试报告](#jest测试报告)
-        - [Jest命令行测试报告](#jest命令行测试报告)
+      - [新建 Jest demo 项目的测试文件及测试用例](#新建-jest-demo-项目的测试文件及测试用例)
+      - [编写 Jest demo 测试用例](#编写-jest-demo-测试用例)
+      - [配置 Jest 配置文件](#配置-jest-配置文件)
+      - [调整 Jest 测试脚本](#调整-jest-测试脚本)
+      - [运行 Jest 测试用例](#运行-jest-测试用例)
+      - [Jest 测试报告](#jest-测试报告)
+        - [Jest 命令行测试报告](#jest-命令行测试报告)
         - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
   - [进阶用法](#进阶用法)
     - [持续集成](#持续集成)
       - [接入 github action](#接入-github-action)
         - [Mocha 版本接入 github action](#mocha-版本接入-github-action)
         - [Jest 版本接入 github action](#jest-版本接入-github-action)
+    - [常用断言](#常用断言)
+      - [SuperTest 的内置断言](#supertest-的内置断言)
+      - [CHAI 的常用断言](#chai-的常用断言)
+      - [Jest 的常用断言](#jest-的常用断言)
+    - [数据驱动](#数据驱动)
+      - [新建测试配置文件](#新建测试配置文件)
+      - [编写测试配置文件](#编写测试配置文件)
+      - [新建测试数据文件](#新建测试数据文件)
+      - [编写测试数据文件](#编写测试数据文件)
+      - [更新测试用例来支持数据驱动](#更新测试用例来支持数据驱动)
+      - [运行该测试用例确认数据驱动是否生效](#运行该测试用例确认数据驱动是否生效)
+    - [多环境支持](#多环境支持)
+      - [新建多环境测试配置文件](#新建多环境测试配置文件)
+      - [编写多环境测试配置文件](#编写多环境测试配置文件)
+      - [新建多环境测试数据文件](#新建多环境测试数据文件)
+      - [编写多环境测试数据文件](#编写多环境测试数据文件)
+      - [更新测试用例来支持多环境](#更新测试用例来支持多环境)
+      - [更新测试脚本来支持多环境](#更新测试脚本来支持多环境)
+      - [运行该测试用例确认多环境支持是否生效](#运行该测试用例确认多环境支持是否生效)
 
 ## 介绍
 
-本项目是一个使用 SuperTest 进行 API 自动化测试的快速启动项目教程，会使用 Jest 或 Mocha 作为测试框架进行demo演示。
+本项目是一个使用 SuperTest 进行 API 自动化测试的快速启动项目教程，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。
 
-下面会依次介绍 SuperTest、Jest 和 Mocha,让大家提前了解这些工具的基本使用。
+下面会依次介绍 SuperTest、Jest 和 Mocha，让大家提前了解这些工具的基本使用。
 
-### SuperTest介绍
+### SuperTest 介绍
 
 "Supertest" 是一个用于测试 Node.js 应用程序的流行 JavaScript 库。它主要用于进行端到端（End-to-End）测试，也称为集成测试，以确保你的应用程序在不同组件之间正常运行。Supertest 通常与 Mocha、Jasmine 或 Jest 等测试框架一起使用，以编写和运行测试用例。
 
@@ -66,7 +89,7 @@
 
 官方文档：<https://github.com/ladjs/supertest>
 
-> 备注：Supertest不止可以用来做API测试，也可以用来做单元测试和集成测试
+> 备注：Supertest 不止可以用来做 API 测试，也可以用来做单元测试和集成测试
 
 代码示例：
 
@@ -74,7 +97,7 @@
 // 导入 supertest
 const request = require('supertest');
 
-request({URL}) // 请求(url) 或 请求(app)
+request({URL}) // 请求 (url) 或 请求 (app)
 .get() or .put() or.post() // http method
 .set() // http 选项
 .send() //  请求的 body
@@ -97,7 +120,7 @@ Jest 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScri
 - 丰富的生态系统：Jest 有丰富的插件和扩展，可用于扩展其功能，如覆盖率报告、测试报告和其他工具的集成。
 - 社区支持：Jest 是一个流行的测试框架，拥有庞大的社区，提供了大量的文档、教程和支持资源。
 
-Jest通常与其他工具如Babel（用于转译 JavaScript）、Enzyme（用于 React 组件测试）、Supertest（用于 API 测试）等一起使用，以实现全面的测试覆盖和确保代码质量。无论你是在编写前端代码还是后端代码，Jest都是一个强大的测试工具，可以帮助你捕获潜在的问题，提高代码质量和可维护性。
+Jest 通常与其他工具如 Babel（用于转译 JavaScript）、Enzyme（用于 React 组件测试）、Supertest（用于 API 测试）等一起使用，以实现全面的测试覆盖和确保代码质量。无论你是在编写前端代码还是后端代码，Jest 都是一个强大的测试工具，可以帮助你捕获潜在的问题，提高代码质量和可维护性。
 
 官方文档：<https://jestjs.io/docs/zh-Hans/getting-started>
 
@@ -109,7 +132,7 @@ const jest = require('jest');
 
 describe(): // 测试场景
 
-it(): // 测试用例, it() 在 describe()里面
+it(): // 测试用例，it() 在 describe() 里面
 
 before(): // 这个动作在所有测试用例之前执行
 
@@ -143,7 +166,7 @@ const mocha = require('mocha');
 
 describe(): // 测试场景
 
-it(): // 测试用例, it() 在 describe()里面
+it(): // 测试用例，it() 在 describe() 里面
 
 before(): // 这个动作在所有测试用例之前执行
 
@@ -214,7 +237,7 @@ SuperTest-Jest-demo
 
 ## 从 0 到 1 搭建 SuperTest 接口自动化测试项目
 
-下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行demo演示。
+下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。
 
 ### Mocha 版本
 
@@ -258,7 +281,7 @@ touch test.spec.js
 
 #### 编写测试用例
 
-> 测试接口可参考项目中 demoAPI.md文件
+> 测试接口可参考项目中 demoAPI.md 文件
 
 ```javascript
 // Test: test.spec.js
@@ -303,7 +326,7 @@ describe('Verify that the Get and POST API returns correctly', function(){
 });
 ```
 
-#### 配置mocha配置文件
+#### 配置 mocha 配置文件
 
 - 新建配置文件
 
@@ -353,7 +376,7 @@ npm run test
 npm install --save-dev mochawesome
 ```
 
-- 更新mocha配置文件
+- 更新 mocha 配置文件
 
 > 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
@@ -384,7 +407,7 @@ npm run test
 
 - 查看测试报告
 
-> 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
+> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
 
 ![BseOQ8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png)
 
@@ -392,7 +415,7 @@ npm run test
 
 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
-#### 新建 Jest demo项目文件夹
+#### 新建 Jest demo 项目文件夹
 
 ```bash
 mkdir SuperTest-Jest-demo
@@ -416,7 +439,7 @@ npm install supertest --save-dev
 npm install jest --save-dev
 ```
 
-#### 新建Jest demo项目的测试文件及测试用例
+#### 新建 Jest demo 项目的测试文件及测试用例
 
 ```bash
 // 新建测试文件夹
@@ -426,9 +449,9 @@ cd Specs
 touch test.spec.js
 ```
 
-#### 编写Jest demo测试用例
+#### 编写 Jest demo 测试用例
 
-> 测试接口可参考项目中 demoAPI.md文件
+> 测试接口可参考项目中 demoAPI.md 文件
 
 ```javascript
 const request = require('supertest');
@@ -469,7 +492,7 @@ describe('Verify that the Get and POST API returns correctly', () => {
 }); 
 ```
 
-#### 配置Jest配置文件
+#### 配置 Jest 配置文件
 
 - 新建配置文件
 
@@ -488,7 +511,7 @@ module.exports = {
 };
 ```
 
-#### 调整Jest测试脚本
+#### 调整 Jest 测试脚本
 
 在 package.json 文件中添加测试脚本
 
@@ -498,16 +521,16 @@ module.exports = {
   },
 ```
 
-#### 运行Jest测试用例
+#### 运行 Jest 测试用例
 
 ```bash
 // 运行测试用例
 npm run test
 ```
 
-#### Jest测试报告
+#### Jest 测试报告
 
-##### Jest命令行测试报告
+##### Jest 命令行测试报告
 
 ![ItJf6N](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png)
 
@@ -519,7 +542,7 @@ npm run test
 npm install --save-dev jest-html-reporters
 ```
 
-- 更新Jest配置文件
+- 更新 Jest 配置文件
 
 > 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
@@ -545,7 +568,7 @@ module.exports = {
 };
 ```
 
-- 运行Jest测试用例
+- 运行 Jest 测试用例
 
 ```bash
 // 运行测试用例
@@ -554,7 +577,7 @@ npm run test
 
 - 查看测试报告
 
-> 测试报告文件夹：Report,点击使用浏览器打开最新html报告文件
+> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
 
 ![12ZreT](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png)
 
@@ -687,3 +710,518 @@ jobs:
 - 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-SuperTest-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
 
 ![fqXy8o](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fqXy8o.png)
+
+### 常用断言
+
+下面会一次介绍一下 SuperTest,CHAI 和 Jest 常用的断言。
+
+#### SuperTest 的内置断言
+
+Supertest 是基于[SuperAgent](https://github.com/ladjs/superagent) 构建的一个更高级的库，所以 Supertest 可以很轻松的使用 SuperAgent 的 HTTP 断言。
+
+示例如下：
+
+```javascript
+.expect(status[, fn]) //断言响应状态代码。
+
+.expect(status, body[, fn]) // 断言响应状态代码和正文。
+
+.expect(body[, fn]) // 用字符串、正则表达式或解析后的正文对象断言响应正文文本。
+
+.expect(field, value[, fn]) // 用字符串或正则表达式断言标题字段值。
+
+.expect(function(res) {}) // 传递一个自定义断言函数。它将得到要检查的响应对象。如果检查失败，则抛出错误。
+```
+
+#### CHAI 的常用断言
+
+- 相等性断言（Equality Assertions）
+
+```javascript
+expect(actual).to.equal(expected) // 验证实际值是否等于期望值。
+expect(actual).to.deep.equal(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。
+expect(actual).to.eql(expected) // 与 deep.equal 一样，用于深度相等的比较。
+```
+
+- 包含性断言（Inclusion Assertions）
+
+```javascript
+expect(array).to.include(value) // 验证数组是否包含指定的值。
+expect(string).to.include(substring) // 验证字符串是否包含指定的子字符串。
+expect(object).to.include(key) // 验证对象是否包含指定的键。
+```
+
+- 类型断言（Type Assertions）
+
+```javascript
+expect(actual).to.be.a(type) // 验证实际值的类型是否等于指定类型。
+expect(actual).to.be.an(type) // 与 to.be.a 一样，用于类型断言。
+expect(actual).to.be.an.instanceof(constructor) // 验证实际值是否是指定构造函数的实例。
+```
+
+- 真假性断言（Truthiness Assertions）
+
+```javascript
+expect(value).to.be.true // 验证值是否为真。
+expect(value).to.be.false // 验证值是否为假。
+expect(value).to.exist // 验证值是否存在，非 null 和非 undefined。
+```
+
+- 长度断言（Length Assertions）
+
+```javascript
+expect(array).to.have.length(length) // 验证数组的长度是否等于指定长度。
+expect(string).to.have.lengthOf(length) // 验证字符串的长度是否等于指定长度。
+```
+
+- 空值断言（Empty Assertions）
+
+```javascript
+expect(array).to.be.empty // 验证数组是否为空。
+expect(string).to.be.empty // 验证字符串是否为空。
+```
+
+- 范围断言（Range Assertions）
+
+```javascript
+expect(value).to.be.within(min, max) // 验证值是否在指定的范围内。
+expect(value).to.be.above(min) // 验证值是否大于指定值。
+expect(value).to.be.below(max) // 验证值是否小于指定值。
+```
+
+- 异常断言（Exception Assertions）
+
+```javascript
+expect(fn).to.throw(error) // 验证函数是否抛出指定类型的异常。
+expect(fn).to.throw(message) // 验证函数是否抛出包含指定消息的异常。
+```
+
+- 存在性断言（Existence Assertions）
+
+```javascript
+expect(object).to.have.property(key) // 验证对象是否包含指定属性。
+expect(array).to.have.members(subset) // 验证数组是否包含指定的成员。
+```
+
+更多 chai 的断言，请查看<https://www.chaijs.com/api/assert/>
+
+#### Jest 的常用断言
+
+- 相等性断言（Equality Assertions）
+
+```javascript
+expect(actual).toBe(expected) // 验证实际值是否严格等于期望值。
+expect(actual).toEqual(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。
+```
+
+- 不相等性断言
+
+```javascript
+expect(actual).not.toBe(expected) // 验证实际值与期望值不相等。
+```
+
+- 包含性断言（Inclusion Assertions）
+
+```javascript
+expect(array).toContain(value) // 验证数组是否包含指定的值。
+```
+
+- 类型断言（Type Assertions）
+
+```javascript
+expect(actual).toBeTypeOf(expected) // 验证实际值的类型是否等于指定类型。
+```
+
+- 真假性断言（Truthiness Assertions）
+
+```javascript
+expect(value).toBeTruthy() // 验证值是否为真。
+expect(value).toBeFalsy() // 验证值是否为假。
+```
+
+- 异步断言
+
+```javascript
+await expect(promise).resolves.toBe(expected) // 验证异步操作是否成功完成并返回与期望值匹配的结果。
+```
+
+- 异常断言
+
+```javascript
+expect(fn).toThrow(error) // 验证函数是否抛出指定类型的异常。
+expect(fn).toThrow(message) // 验证函数是否抛出包含指定消息的异常。
+```
+
+- 范围断言
+
+```javascript
+expect(value).toBeGreaterThanOrEqual(min) // 验证值是否大于或等于指定的最小值。
+expect(value).toBeLessThanOrEqual(max) // 验证值是否小于或等于指定的最大值。
+```
+
+- 对象属性断言
+
+```javascript
+expect(object).toHaveProperty(key, value) // 验证对象是否包含指定属性，并且该属性的值等于指定值。
+```
+
+更多 Jest 的断言，请查看<https://jestjs.io/docs/expect>
+
+### 数据驱动
+
+API 测试的数据驱动是一种测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。
+
+Mocha 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+
+Jest 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+
+> mocha 版本和 Jest 版本类似，这里以 Mocha 版本为例
+
+#### 新建测试配置文件
+
+```bash
+// 新建测试配置文件夹
+mkdir Config
+// 新建测试配置文件
+cd Config
+touch config.js
+```
+
+#### 编写测试配置文件
+
+```javascript
+// Test config file
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+```
+
+#### 新建测试数据文件
+
+```bash
+// 新建测试数据文件夹
+mkdir testData
+// 进入测试数据文件夹
+cd testData
+// 新建请求数据文件
+touch requestData.js
+// 新建响应数据文件
+touch responseData.js
+```
+
+#### 编写测试数据文件
+
+- 编写请求数据文件
+
+```javascript
+// Test request data file
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    },  // request data for POST API
+};
+```
+
+- 编写响应数据文件
+
+```javascript
+// Test response data file
+module.exports = {
+    getAPI: {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },  // response data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1,
+        "id": 101
+    },  // response data for POST API
+};
+```
+
+#### 更新测试用例来支持数据驱动
+
+> 为做区分，这里新建测试用例文件，文件名为 dataDrivingTest.spec.js
+
+```javascript
+// Test: dataDrivingTest.spec.js
+const request = require('supertest'); // import supertest
+require('chai');
+// import chai
+const expect = require('chai').expect; // import expect
+
+const config = require('../Config/testConfig'); // import test config
+const requestData = require('../TestData/requestData'); // import request data
+const responseData = require('../TestData/responseData'); // import response data
+
+// Test Suite
+describe('Data Driving-Verify that the Get and POST API returns correctly', function(){
+        // Test case 1
+        it('Data Driving-Verify that the GET API returns correctly', function(done){
+            request(config.host) // Test endpoint
+                .get(config.getAPI) // API endpoint
+                .expect(200) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(responseData.getAPI.id)
+                    expect(res.body.userId).to.equal(responseData.getAPI.userId)
+                    expect(res.body.title).to.equal(responseData.getAPI.title)
+                    expect(res.body.body).to.equal(responseData.getAPI.body)
+                }) // expected response body
+                .end(done) // end the test case
+
+        });
+        // Test case 2
+        it('Data Driving-Verify that the POST API returns correctly', function(done){
+            request(config.host) // Test endpoint
+                .post(config.postAPI) // API endpoint
+                .send(requestData.postAPI) // request body
+                .expect(201) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(responseData.postAPI.id )
+                    expect(res.body.userId).to.equal(responseData.postAPI.userId )
+                    expect(res.body.title).to.equal(responseData.postAPI.title )
+                    expect(res.body.body).to.equal(responseData.postAPI.body )
+                }) // expected response body
+                .end(done) // end the test case
+        });
+});
+```
+
+#### 运行该测试用例确认数据驱动是否生效
+
+> 若用 demo 项目运行数据驱动支持测试用例：dataDrivingTest.spec.js，建议先屏蔽掉 test.spec.js 测试用例，否则会报错
+
+![OCDzLr](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OCDzLr.png)
+
+### 多环境支持
+
+在使用 Jest 或 Mocha 进行 API 测试时，你可能需要支持测试不同的环境，例如开发环境、测试环境和生产环境。这可以通过配置不同的测试脚本和环境变量来实现。
+
+下面会简单描述一下如何在 Jest 和 Mocha 中配置多环境支持，会以支持两个环境来进行 demo 演示。
+
+Mocha 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+
+Jest 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+
+> mocha 版本和 Jest 版本类似，这里以 Mocha 版本为例
+
+#### 新建多环境测试配置文件
+
+```bash
+// 新建测试配置文件夹 若已有则不用新建
+mkdir Config
+// 新建测试环境测试配置文件
+cd Config
+touch testConfig-test.js
+// 新建开发环境测试配置文件
+touch testConfig-dev.js
+```
+
+#### 编写多环境测试配置文件
+
+- 编写测试环境测试配置文件
+
+> 根据实际情况编写测试环境测试配置文件
+
+```javascript
+// Test config file for test environment
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+```
+
+- 编写开发环境测试配置文件
+
+> 根据实际情况编写开发环境测试配置文件
+
+```javascript
+// Test config file for dev environment
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+```
+
+#### 新建多环境测试数据文件
+
+```bash
+// 新建测试数据文件夹 若已有则不用新建
+mkdir testData
+// 进入测试数据文件夹
+cd testData
+// 新建测试环境请求数据文件
+touch requestData-test.js
+// 新建测试环境响应数据文件
+touch responseData-test.js
+// 新建开发环境请求数据文件
+touch requestData-dev.js
+// 新建开发环境响应数据文件
+touch responseData-dev.js
+```
+
+#### 编写多环境测试数据文件
+
+- 编写测试环境请求数据文件
+
+> 根据实际情况编写测试环境请求数据文件
+
+```javascript
+// Test request data file for test environment
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    },  // request data for POST API
+};
+```
+
+- 编写测试环境响应数据文件
+
+> 根据实际情况编写测试环境响应数据文件
+
+```javascript
+// Test response data file for test environment
+module.exports = {
+    getAPI: {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },  // response data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1,
+        "id": 101
+    },  // response data for POST API
+};
+```
+
+- 编写开发环境请求数据文件
+
+> 根据实际情况编写开发环境请求数据文件
+
+```javascript
+// Test request data file for dev environment
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    },  // request data for POST API
+};
+```
+
+- 编写开发环境响应数据文件
+
+> 根据实际情况编写开发环境响应数据文件
+
+```javascript
+// Test response data file for dev environment
+module.exports = {
+    getAPI: {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },  // response data for GET API
+    postAPI:{
+        "title": "foo",
+        "body": "bar",
+        "userId": 1,
+        "id": 101
+    },  // response data for POST API
+};
+```
+
+#### 更新测试用例来支持多环境
+
+> 为做区分，这里新建测试用例文件，文件名为 multiEnvTest.spec.js
+
+```javascript
+// Test: multiEnvTest.spec.js
+const request = require('supertest'); // import supertest
+require('chai');
+// import chai
+const expect = require('chai').expect; // import expect
+
+const config = process.env.NODE_ENV === 'test' ? require('../Config/testConfig-test') : require('../Config/testConfig-dev'); // import test config
+const requestData = process.env.NODE_ENV === 'test' ? require('../TestData/requestData-test') : require('../TestData/requestData-dev'); // import request data
+const responseData= process.env.NODE_ENV === 'test' ? require('../TestData/responseData-test') : require('../TestData/responseData-dev'); // import response data
+
+// Test Suite
+describe('multiEnv-Verify that the Get and POST API returns correctly', function(){
+    // Test case 1
+    it('multiEnv-Verify that the GET API returns correctly', function(done){
+        request(config.host) // Test endpoint
+            .get(config.getAPI) // API endpoint
+            .expect(200) // expected response status code
+            .expect(function (res) {
+                expect(res.body.id).to.equal(responseData.getAPI.id)
+                expect(res.body.userId).to.equal(responseData.getAPI.userId)
+                expect(res.body.title).to.equal(responseData.getAPI.title)
+                expect(res.body.body).to.equal(responseData.getAPI.body)
+            }) // expected response body
+            .end(done) // end the test case
+
+    });
+    // Test case 2
+    it('multiEnv-Verify that the POST API returns correctly', function(done){
+        request(config.host) // Test endpoint
+            .post(config.postAPI) // API endpoint
+            .send(requestData.postAPI) // request body
+            .expect(201) // expected response status code
+            .expect(function (res) {
+                expect(res.body.id).to.equal(responseData.postAPI.id )
+                expect(res.body.userId).to.equal(responseData.postAPI.userId )
+                expect(res.body.title).to.equal(responseData.postAPI.title )
+                expect(res.body.body).to.equal(responseData.postAPI.body )
+            }) // expected response body
+            .end(done) // end the test case
+    });
+});
+```
+
+#### 更新测试脚本来支持多环境
+
+'''json
+// package.json
+"scripts": {
+    "test": "NODE_ENV=test mocha" // 运行测试环境测试脚本
+    "dev": "NODE_ENV=dev mocha" // 运行 dev 环境测试脚本
+  },
+'''
+
+#### 运行该测试用例确认多环境支持是否生效
+
+> 若用 demo 项目运行多环境支持测试用例：multiEnvTest.spec.js，建议先屏蔽掉 dataDrivingTest.spec.js 和 test.spec.js 测试用例，否则会报错
+
+- 运行测试环境测试脚本
+
+```bash
+npm run test
+```
+
+![OMbN1v](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OMbN1v.png)
+
+- 运行开发环境测试脚本
+
+```bash
+npm run dev
+```
+
+![mWzei1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mWzei1.png)
