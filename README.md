@@ -1,287 +1,289 @@
 <!-- markdownlint-disable MD041 -->
 <!-- markdownlint-disable MD033 -->
-<div align="right"><strong>🇨🇳中文</a></strong>  | <strong><a href="./README_EN.md">🇬🇧English</strong></div>
+<div align="right"><strong><a href="./README_ZH.md">🇨🇳中文</a></strong>  | <strong>🇬🇧English</strong></div>
 <!-- markdownlint-disable MD041 -->
 <!-- markdownlint-disable MD033 -->
 
-# SuperTest 接口自动化测试快速启动项目
+# SuperTest API Automation Testing QuickStart Project
 
-关于使用 SuperTest 进行 API 自动化测试的快速启动项目介绍文档。
+An introductory QuickStart project document on API automation testing with SuperTest.
 
-- [SuperTest 接口自动化测试快速启动项目](#supertest-接口自动化测试快速启动项目)
-  - [介绍](#介绍)
-    - [SuperTest 介绍](#supertest-介绍)
-    - [Jest 介绍](#jest-介绍)
-    - [Mocha 介绍](#mocha-介绍)
-    - [CHAI 简介](#chai-简介)
-  - [项目依赖](#项目依赖)
-  - [项目文件结构](#项目文件结构)
-  - [从 0 到 1 搭建 SuperTest 接口自动化测试项目](#从-0-到-1-搭建-supertest-接口自动化测试项目)
-    - [Mocha 版本](#mocha-版本)
-      - [新建项目文件夹](#新建项目文件夹)
-      - [项目初始化](#项目初始化)
-      - [安装依赖](#安装依赖)
-      - [新建测试文件及测试用例](#新建测试文件及测试用例)
-      - [编写测试用例](#编写测试用例)
-      - [配置 mocha 配置文件](#配置-mocha-配置文件)
-      - [调整测试脚本](#调整测试脚本)
-      - [运行测试用例](#运行测试用例)
-      - [测试报告](#测试报告)
-        - [命令行测试报告](#命令行测试报告)
-        - [集成 mochawesome 测试报告](#集成-mochawesome-测试报告)
-    - [Jest 版本](#jest-版本)
-      - [新建 Jest demo 项目文件夹](#新建-jest-demo-项目文件夹)
-      - [Jest demo 项目初始化](#jest-demo-项目初始化)
-      - [Jest demo 安装依赖](#jest-demo-安装依赖)
-      - [新建 Jest demo 项目的测试文件及测试用例](#新建-jest-demo-项目的测试文件及测试用例)
-      - [编写 Jest demo 测试用例](#编写-jest-demo-测试用例)
-      - [配置 Jest 配置文件](#配置-jest-配置文件)
-      - [调整 Jest 测试脚本](#调整-jest-测试脚本)
-      - [运行 Jest 测试用例](#运行-jest-测试用例)
-      - [Jest 测试报告](#jest-测试报告)
-        - [Jest 命令行测试报告](#jest-命令行测试报告)
-        - [集成 jest-html-reporters 测试报告](#集成-jest-html-reporters-测试报告)
-  - [进阶用法](#进阶用法)
-    - [持续集成](#持续集成)
-      - [接入 github action](#接入-github-action)
-        - [Mocha 版本接入 github action](#mocha-版本接入-github-action)
-        - [Jest 版本接入 github action](#jest-版本接入-github-action)
-    - [常用断言](#常用断言)
-      - [SuperTest 的内置断言](#supertest-的内置断言)
-      - [CHAI 的常用断言](#chai-的常用断言)
-      - [Jest 的常用断言](#jest-的常用断言)
-    - [数据驱动](#数据驱动)
-      - [新建测试配置文件](#新建测试配置文件)
-      - [编写测试配置文件](#编写测试配置文件)
-      - [新建测试数据文件](#新建测试数据文件)
-      - [编写测试数据文件](#编写测试数据文件)
-      - [更新测试用例来支持数据驱动](#更新测试用例来支持数据驱动)
-      - [运行该测试用例确认数据驱动是否生效](#运行该测试用例确认数据驱动是否生效)
-    - [多环境支持](#多环境支持)
-      - [新建多环境测试配置文件](#新建多环境测试配置文件)
-      - [编写多环境测试配置文件](#编写多环境测试配置文件)
-      - [新建多环境测试数据文件](#新建多环境测试数据文件)
-      - [编写多环境测试数据文件](#编写多环境测试数据文件)
-      - [更新测试用例来支持多环境](#更新测试用例来支持多环境)
-      - [更新测试脚本来支持多环境](#更新测试脚本来支持多环境)
-      - [运行该测试用例确认多环境支持是否生效](#运行该测试用例确认多环境支持是否生效)
+- [SuperTest API Automation Testing QuickStart Project](#supertest-api-automation-testing-quickstart-project)
+  - [Introduction](#introduction)
+    - [Introduction of SuperTest](#introduction-of-supertest)
+    - [Introduction of Jest](#introduction-of-jest)
+    - [Introduction of Mocha](#introduction-of-mocha)
+    - [Introduction of CHAI](#introduction-of-chai)
+  - [Project dependencies](#project-dependencies)
+  - [Project Structure](#project-structure)
+  - [Build a SuperTest API automation test project from 0 to 1](#build-a-supertest-api-automation-test-project-from-0-to-1)
+    - [Mocha version](#mocha-version)
+      - [Create a new project folder](#create-a-new-project-folder)
+      - [Project Initialization](#project-initialization)
+      - [Install dependencies](#install-dependencies)
+      - [Create new test folder and test cases](#create-new-test-folder-and-test-cases)
+      - [Writing Test Cases](#writing-test-cases)
+      - [Configuring mocha config files](#configuring-mocha-config-files)
+      - [Updating test scripts for mocha](#updating-test-scripts-for-mocha)
+      - [Running test cases](#running-test-cases)
+      - [Test Report](#test-report)
+        - [Terminal Test Report](#terminal-test-report)
+        - [Integrated mochawesome test report](#integrated-mochawesome-test-report)
+    - [Jest version](#jest-version)
+      - [Create a new jest project folder](#create-a-new-jest-project-folder)
+      - [Jest demo project initialization](#jest-demo-project-initialization)
+      - [Jest demo install dependencies](#jest-demo-install-dependencies)
+      - [Create new Jest demo project test folder and test cases](#create-new-jest-demo-project-test-folder-and-test-cases)
+      - [Writing Jest demo Test Cases](#writing-jest-demo-test-cases)
+      - [Configuring Jest config files](#configuring-jest-config-files)
+      - [Adapting Jest Test Scripts](#adapting-jest-test-scripts)
+      - [Runing test case](#runing-test-case)
+      - [Jest test report](#jest-test-report)
+        - [Jest terminal Test Report](#jest-terminal-test-report)
+        - [Integrating jest-html-reporters test reports](#integrating-jest-html-reporters-test-reports)
+  - [Advanced Usage](#advanced-usage)
+    - [CI/CD integration](#cicd-integration)
+      - [Integration github action](#integration-github-action)
+        - [The mocha version integration github action](#the-mocha-version-integration-github-action)
+        - [The jest version integration github action](#the-jest-version-integration-github-action)
+    - [Common Assertions](#common-assertions)
+      - [SuperTest's built-in assertions](#supertests-built-in-assertions)
+      - [Common Assertions for CHAI](#common-assertions-for-chai)
+      - [Common Assertions for Jest](#common-assertions-for-jest)
+    - [Data Driven](#data-driven)
+      - [Create test configuration files](#create-test-configuration-files)
+      - [Edit test configuration files](#edit-test-configuration-files)
+      - [Create test data files](#create-test-data-files)
+      - [Edit test data files](#edit-test-data-files)
+      - [Update test cases to support data-driven](#update-test-cases-to-support-data-driven)
+      - [Run the test case to check whether the data driver is effective.](#run-the-test-case-to-check-whether-the-data-driver-is-effective)
+    - [Multiple Environment Support](#multiple-environment-support)
+      - [Create Multi-Environment Test Configuration File](#create-multi-environment-test-configuration-file)
+      - [Edit Multi-Environment Test Configuration File](#edit-multi-environment-test-configuration-file)
+      - [Create Multi-Environment Test Data File](#create-multi-environment-test-data-file)
+      - [Edit Multi-Environment Test Data File](#edit-multi-environment-test-data-file)
+      - [Update test cases to support multiple environments](#update-test-cases-to-support-multiple-environments)
+      - [Update test scripts to support multiple environments](#update-test-scripts-to-support-multiple-environments)
+      - [Run the test case to check if the multi environment support is working.](#run-the-test-case-to-check-if-the-multi-environment-support-is-working)
 
-## 介绍
+## Introduction
 
-本项目是一个使用 SuperTest 进行 API 自动化测试的快速启动项目教程，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。
+This project is a quick start tutorial for API automation testing using SuperTest, and will use Jest or Mocha as the testing framework for demo demonstration.
 
-下面会依次介绍 SuperTest、Jest 和 Mocha，让大家提前了解这些工具的基本使用。
+We will introduce SuperTest, Jest and Mocha in turn, so that you can understand the basic usage of these tools in advance.
 
-### SuperTest 介绍
+### Introduction of SuperTest
 
-"Supertest" 是一个用于测试 Node.js 应用程序的流行 JavaScript 库。它主要用于进行端到端（End-to-End）测试，也称为集成测试，以确保你的应用程序在不同组件之间正常运行。Supertest 通常与 Mocha、Jasmine 或 Jest 等测试框架一起使用，以编写和运行测试用例。
+"Supertest" is a popular JavaScript library for testing Node.js applications. It is primarily used for end-to-end testing, also known as integration testing, to make sure that your application works properly across different components.Supertest is typically used in conjunction with testing frameworks such as Mocha, Jasmine or Jest to write and run test cases.
 
-以下是 Supertest 的一些关键特点和用途：
+Here are some of the key features and uses of Supertest:
 
-- 发起 HTTP 请求：Supertest 允许你轻松地模拟 HTTP 请求，例如 GET、POST、PUT、DELETE 等，以测试你的应用程序的路由和端点。
-- 链式语法：Supertest 提供了一种链式语法，使你能够在单个测试用例中构建和执行多个请求，这有助于模拟用户在应用程序中的不同操作。
-- 断言和期望：你可以使用 Supertest 结合断言库（如 Chai）来检查响应的内容、状态码、头信息等，以确保应用程序的期望行为。
-- 身份验证测试：Supertest 可以用于测试需要身份验证的端点，以确保用户登录和授权功能正常。
-- 异步支持：Supertest 可以处理异步操作，例如等待响应返回后执行进一步的测试代码。
-- 方便的集成：Supertest 可以轻松与不同的 Node.js 框架（如 Express、Koa、Hapi 等）一起使用，因此你可以测试各种类型的应用程序。
+- Initiating HTTP requests: Supertest allows you to easily simulate HTTP requests such as GET, POST, PUT, DELETE, etc. to test your application's routing and endpoints.
+- Chained Syntax: Supertest provides a chained syntax that allows you to build and execute multiple requests in a single test case, which helps simulate different user actions in your application.
+- Assertions and Expectations: You can use Supertest in conjunction with assertion libraries such as Chai to examine the content of the response, status codes, headers, etc. to ensure the expected behavior of your application.
+- Authentication Testing: Supertest can be used to test endpoints that require authentication to ensure that user login and authorization functions properly.
+- Asynchronous support: Supertest can handle asynchronous operations, such as waiting for a response to return before executing further test code.
+- Easy Integration: Supertest can be easily used with different Node.js frameworks (e.g. Express, Koa, Hapi, etc.), so you can test all types of applications.
 
-使用 Supertest 可以帮助你验证你的应用程序是否按预期工作，以及在应用程序发生更改时快速捕获潜在的问题。通常，你需要在项目中安装 Supertest 和测试框架，然后编写测试用例来模拟不同的请求和检查响应。这有助于提高代码质量和可维护性，确保你的应用程序在不断演化的过程中保持稳定性。
+Using Supertest can help you verify that your application is working as expected, as well as quickly catch potential problems when changes are made to your application. Typically, you need to install Supertest and the testing framework in your project, and then write test cases to simulate different requests and check responses. This helps improve code quality and maintainability and ensures that your application remains stable as it evolves.
 
-官方文档：<https://github.com/ladjs/supertest>
+Official documentation: <https://github.com/ladjs/supertest>
 
-> 备注：Supertest 不止可以用来做 API 测试，也可以用来做单元测试和集成测试
+> Note: Supertest can be used not only for API testing, but also for unit and integration testing.
 
-代码示例：
+code examples:
 
 ```javascript
-// 导入 supertest
+// import supertest
 const request = require('supertest');
 
-request({URL}) // 请求 (url) 或 请求 (app)
-.get() or .put() or.post() // http method
-.set() // http 选项
-.send() //  请求的 body
-.expect() //  断言
-.end() // 结束请求
+request({URL}) // request(url) or request(app)
+.get() or .put() or.post() // http methods
+.set() // http options
+.send() // http body
+.expect() // http assertions
+.end() // end the request
 ```
 
-### Jest 介绍
+### Introduction of Jest
 
-Jest 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScript 应用程序的单元测试、集成测试和端到端测试。它的目标是提供简单、快速和易于使用的测试工具，适用于各种 JavaScript 应用程序，包括前端和后端应用程序。
+Jest is a popular JavaScript testing framework for writing and running unit, integration and end-to-end tests for JavaScript applications. Its goal is to provide simple, fast and easy-to-use testing tools for a wide variety of JavaScript applications, both front-end and back-end.
 
-以下是 Jest 的一些关键特点和用途：
+Here are some of the key features and uses of Jest:
 
-- 内置断言库：Jest 包括一个强大的断言库，使你能够轻松地编写断言，以验证代码的行为是否符合预期。
-- 自动模拟：Jest 自动创建模拟（mocks），帮助你模拟函数、模块和外部依赖，从而让测试更加简单和可控。
-- 快速和并行：Jest 通过智能地选择要运行的测试以及并行执行测试，可以快速地运行大量测试用例，从而节省时间。
-- 全面的测试套件：Jest 支持单元测试、集成测试和端到端测试，并可以测试 JavaScript、TypeScript、React、Vue、Node.js 等各种应用程序类型。
-- 快照测试：Jest 具有快照测试功能，可用于检查 UI 组件的渲染是否与之前的快照匹配，从而捕获 UI 变化。
-- 自动监视模式：Jest 具有一个监视模式，可在代码更改时自动重新运行相关测试，从而支持开发人员进行持续测试。
-- 丰富的生态系统：Jest 有丰富的插件和扩展，可用于扩展其功能，如覆盖率报告、测试报告和其他工具的集成。
-- 社区支持：Jest 是一个流行的测试框架，拥有庞大的社区，提供了大量的文档、教程和支持资源。
+- Built-in Assertion Library: Jest includes a powerful assertion library that makes it easy to write assertions to verify that code behaves as expected.
+- Automated mocks: Jest automatically creates mocks that help you simulate functions, modules, and external dependencies, making testing easier and more manageable.
+- Fast and Parallel: Jest saves time by intelligently selecting which tests to run and executing them in parallel, allowing you to run a large number of test cases quickly.
+- Comprehensive Test Suite: Jest supports unit, integration and end-to-end testing and can test a wide range of application types such as JavaScript, TypeScript, React, Vue, Node.js and more.
+- Snapshot testing: Jest has a snapshot testing feature that can be used to capture UI changes by checking if the rendering of a UI component matches a previous snapshot.
+- Automatic Watch Mode: Jest has a watch mode that automatically re-runs tests as code changes are made, supporting developers in continuous testing.
+- Rich Ecosystem: Jest has a rich set of plug-ins and extensions that can be used to extend its functionality, such as coverage reporting, test reporting, and integration with other tools.
+- Community Support: Jest is a popular testing framework with a large community that provides extensive documentation, tutorials and support resources.
 
-Jest 通常与其他工具如 Babel（用于转译 JavaScript）、Enzyme（用于 React 组件测试）、Supertest（用于 API 测试）等一起使用，以实现全面的测试覆盖和确保代码质量。无论你是在编写前端代码还是后端代码，Jest 都是一个强大的测试工具，可以帮助你捕获潜在的问题，提高代码质量和可维护性。
+Jest is often used in conjunction with other tools such as Babel (for transcoding JavaScript), Enzyme (for React component testing), Supertest (for API testing), etc. to achieve comprehensive test coverage and ensure code quality. Whether you're writing front-end or back-end code, Jest is a powerful testing tool that can help you catch potential problems and improve code quality and maintainability.
 
-官方文档：<https://jestjs.io/docs/zh-Hans/getting-started>
+Official Documentation: <https://jestjs.io/docs/zh-Hans/getting-started>
 
-代码示例：
+Code examples:
 
 ```javascript
-// 导入 jest
+// import jest
 const jest = require('jest');
 
-describe(): // 测试场景
+describe(): // test scenarios
 
-it(): // 测试用例，it() 在 describe() 里面
+it(): // detailed test case, it() is in the describe()
 
-before(): // 这个动作在所有测试用例之前执行
+before(): // this action is before all test cases
 
-after(): // 这个动作在所有测试用例之后执行
+after(): // this action is after all test cases
 ```
 
-### Mocha 介绍
+### Introduction of Mocha
 
-Mocha 是一个流行的 JavaScript 测试框架，用于编写和运行 JavaScript 应用程序的各种测试，包括单元测试、集成测试和端到端测试。Mocha 提供了灵活性和可扩展性，使开发人员能够轻松地定制测试套件以满足其项目的需求。
+Mocha is a popular JavaScript testing framework for writing and running a variety of tests for JavaScript applications, including unit tests, integration tests, and end-to-end tests.Mocha provides flexibility and extensibility, allowing developers to easily customize the test suite to meet the needs of their projects.
 
-以下是 Mocha 的一些关键特点和用途：
+Here are some of the key features and uses of Mocha:
 
-- 多种测试风格：Mocha 支持多种测试风格，包括 BDD（行为驱动开发）和 TDD（测试驱动开发）。这使开发人员可以根据自己的偏好编写测试用例。
-- 丰富的断言库：Mocha 本身并不包括断言库，但它可以与多种断言库（如 Chai、Should.js、Expect.js 等）结合使用，使你能够使用喜欢的断言风格来编写测试。
-- 异步测试：Mocha 内置支持异步测试，允许你测试异步代码、Promise、回调函数等，确保代码在异步场景下的正确性。
-- 并行测试：Mocha 可以并行运行测试套件中的测试用例，提高测试执行效率。
-- 丰富的插件和扩展：Mocha 有丰富的插件生态系统，可以用于扩展其功能，如测试覆盖率报告、测试报告生成等。
-- 易于集成：Mocha 可以与各种断言库、测试运行器（如 Karma 和 Jest）、浏览器（使用浏览器测试运行器）等一起使用，以适应不同的项目和测试需求。
-- 命令行界面：Mocha 提供了一个易于使用的命令行界面，用于运行测试套件，生成报告以及其他测试相关操作。
-- 持续集成支持：Mocha 可以轻松集成到持续集成（CI）工具中，如 Jenkins、Travis CI、CircleCI 等，以确保代码在每次提交后都能得到测试。
+- Multiple Test Styles: Mocha supports multiple test styles including BDD (Behavior Driven Development) and TDD (Test Driven Development). This allows developers to write test cases according to their preferences.
+- Rich Assertion Library: Mocha does not include an assertion library by itself, but it can be used in conjunction with a variety of assertion libraries (e.g., Chai, Should.js, Expect.js, etc.), allowing you to write tests using your favorite assertion style.
+- Asynchronous Testing: Mocha has built-in support for asynchronous testing, allowing you to test asynchronous code, Promises, callback functions, etc. to ensure that your code is correct in asynchronous scenarios.
+- Parallel Testing: Mocha allows you to run test cases in your test suite in parallel, improving the efficiency of test execution.
+- Rich Plug-ins and Extensions: Mocha has a rich ecosystem of plug-ins that can be used to extend its functionality, such as test coverage reporting, test report generation, and so on.
+- Easy to Integrate: Mocha can be used with various assertion libraries, test runners (such as Karma and Jest), browsers (using the browser test runner), etc. to suit different project and testing needs.
+- Command Line Interface: Mocha provides an easy-to-use command line interface for running test suites, generating reports, and other test-related operations.
+- Continuous Integration Support: Mocha can be easily integrated into Continuous Integration (CI) tools such as Jenkins, Travis CI, CircleCI, etc. to ensure that code is tested after every commit.
 
-Mocha 的灵活性和可扩展性使其成为一个受欢迎的测试框架，适用于各种 JavaScript 项目，包括前端和后端应用程序。开发人员可以根据自己的需求和喜好选择测试工具、断言库和其他扩展，以满足项目的要求。无论你是在编写浏览器端代码还是服务器端代码，Mocha 都是一个强大的测试工具，可帮助你确保代码质量和可靠性。
+Mocha's flexibility and extensibility make it a popular testing framework for a variety of JavaScript projects, including front-end and back-end applications. Developers can choose the testing tools, assertion libraries, and other extensions to meet the requirements of their projects based on their needs and preferences. Whether you are writing browser-side code or server-side code, Mocha is a powerful testing tool to help you ensure code quality and reliability.
 
-官方文档：<https://mochajs.org/>
+Official documentation: <https://mochajs.org/>
 
-代码示例：
+Code examples:
 
 ```javascript
-// 导入 mocha
+// import mocha
 const mocha = require('mocha');
 
-describe(): // 测试场景
+describe(): // test scenarios
 
-it(): // 测试用例，it() 在 describe() 里面
+it(): // detailed test case, it() is in the describe()
 
-before(): // 这个动作在所有测试用例之前执行
+before(): // this action is before all test cases
 
-after(): // 这个动作在所有测试用例之后执行
+after(): // this action is after all test cases
 ```
 
-### CHAI 简介
+### Introduction of CHAI
 
-Chai 是一个 JavaScript 断言库，用于编写和运行测试用例时进行断言和期望值的验证。它是一个流行的测试工具，通常与测试框架（如 Mocha、Jest 等）一起使用，以帮助开发者编写和执行各种类型的测试，包括单元测试和集成测试。
+Chai is a JavaScript assertion library for assertion and expectation validation when writing and running test cases. It is a popular testing tool that is often used in conjunction with testing frameworks (e.g. Mocha, Jest, etc.) to help developers write and execute various types of tests, including unit tests and integration tests.
 
-以下是一些 Chai 的主要特点和用途：
+Here are some of the key features and uses of Chai:
 
-- 可读性强的断言语法：Chai 提供了一个易于阅读和编写的断言语法，使测试用例更易于理解。它支持自然语言的断言风格，例如 expect(foo).to.be.a('string') 或 expect(bar).to.equal(42)。
-- 多种断言风格：Chai 提供了多种不同的断言风格，以适应不同开发者的偏好。主要的风格包括 BDD（Behavior-Driven Development）风格、TDD（Test-Driven Development）风格和 assert 风格。
-- 插件扩展：Chai 可以通过插件进行扩展，以支持更多的断言类型和功能。这使得 Chai 可以满足各种测试需求，包括异步测试、HTTP 请求测试等。
-- 易于集成：Chai 可以轻松集成到各种测试框架中，例如 Mocha、Jest、Jasmine 等。这使得它成为编写测试用例的强大工具。
-- 支持链式断言：Chai 允许你对多个断言进行链式调用，以便更容易进行复杂的测试和验证。
+- Readable Assertion Syntax: Chai provides an easy to read and write assertion syntax that makes test cases easier to understand. It supports natural language assertion styles such as expect(foo).to.be.a('string') or expect(bar).to.equal(42).
+- Multiple Assertion Styles: Chai provides a number of different assertion styles to suit different developer preferences. The main styles include BDD (Behavior-Driven Development) style, TDD (Test-Driven Development) style and assert style.
+- Plugin extensions: Chai can be extended with plugins to support more assertion types and features. This allows Chai to fulfill a variety of testing needs, including asynchronous testing, HTTP request testing, and more.
+- Easy Integration: Chai can be easily integrated with various testing frameworks such as Mocha, Jest, Jasmine etc. This makes it a powerful tool for writing test cases.
+- Chained Assertions Support: Chai allows you to chain calls to multiple assertions to make complex testing and validation easier.
 
-官方文档：<https://www.chaijs.com/>
+Official documentation: <https://www.chaijs.com/>
 
-代码示例：
+Code examples:
 
 ```javascript
-// 导入 chai
+// import chai
 const chai = require('chai');
 const expect = chai.expect;
 
-// demo 断言
-.expect(<actual result>).to.{assert}(<expected result>) // 断言目标严格等于值
+// demo assertions
+.expect(<actual result>).to.{assert}(<expected result>) // Asserts that the target is strictly equal to value.
 
-.expect(‘hello').to.equal('hello'); // 断言目标严格等于值
+.expect(‘hello').to.equal('hello'); // Asserts that the target is strictly equal to value.
 
-.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // 断言目标值不严格等于值。
+.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // Asserts that the target is not strictly equal to value.
 
-.expect('foobar').to.contain('foo'); // 断言目标字符串包含给定的子字符串。
+.expect('foobar').to.contain('foo'); // Asserts that the target contains the given substring.
 
-.expect(foo).to.exist; // 断言目标既不是 null 也不是未定义。
+.expect(foo).to.exist; // Asserts that the target is neither null nor undefined.
 
-.expect(5).to.be.at.most(5); // 断言目标值小于或等于值。
+.expect(5).to.be.at.most(5); // Asserts that the target is less than or equal to value.
 ```
 
-## 项目依赖
+## Project dependencies
 
-> 需提前安装好以下环境
+> The following environments need to be installed in advance
 
-- [x] nodejs, demo 版本为 v21.1.0
+- [x] nodejs, demo version v21.1.0
 
-## 项目文件结构
+## Project Structure
 
-以下是一个 SuperTest 接口自动化测试项目的文件结构，其中包含了测试配置文件、测试用例文件、测试工具文件和测试报告文件。可进行参考。
+The following is the file structure of a SuperTest Interface Automation Test project, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.
 
 ```Text
 SuperTest-Jest-demo
 ├── README.md
 ├── package.json
 ├── package-lock.json
-├── Config // 测试配置文件
+├── Config // Test configuration 
 │   └── config.js
-├── Specs // 测试用例文件
+├── Specs // Test case 
 │   └── test.spec.js
-├── Utils // 测试工具文件
+├── Utils // Test tool 
 │   └── utils.js
-├── Report // 测试报告文件
+├── Report // Test report 
 │   └── report.html
 ├── .gitignore
-└── node_modules // 项目依赖
+└── node_modules // Project dependencies
+    ├── ...
+    └── ...
 ```
 
-## 从 0 到 1 搭建 SuperTest 接口自动化测试项目
+## Build a SuperTest API automation test project from 0 to 1
 
-下面会从 0 到 1 搭建一个 SuperTest 接口自动化测试项目，会使用 Jest 或 Mocha 作为测试框架进行 demo 演示。
+The following is a demo of building a SuperTest interface automation test project from 0 to 1, using either Jest or Mocha as the test framework.
 
-### Mocha 版本
+### Mocha version
 
-可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+You can refer to the demo project at <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>.
 
-#### 新建项目文件夹
+#### Create a new project folder
 
 ```bash
 mkdir SuperTest-Mocha-demo
 ```
 
-#### 项目初始化
+#### Project Initialization
 
 ```bash
-// 进入项目文件夹下
+// enter the project folder
 cd SuperTest-Mocha-demo
-// nodejs 项目初始化
+// nodejs project initialization
 npm init -y
 ```
 
-#### 安装依赖
+#### Install dependencies
 
 ```bash
-// 安装 supertest
+// install supertest library
 npm install supertest --save-dev
-// 安装 mocha测试框架
+// install mocha test framework
 npm install mocha --save-dev
-// 安装 chai断言库
+// install chai assertion library
 npm install chai --save-dev
 ```
 
-#### 新建测试文件及测试用例
+#### Create new test folder and test cases
 
 ```bash
-// 新建测试文件夹
+// create test folder
 mkdir Specs
-// 新建测试用例文件
+// create test case file
 cd Specs
 touch test.spec.js
 ```
 
-#### 编写测试用例
+#### Writing Test Cases
 
-> 测试接口可参考项目中 demoAPI.md 文件
+> The test API can be found in the demoAPI.md file in the project.
 
 ```javascript
 // Test: test.spec.js
@@ -326,28 +328,28 @@ describe('Verify that the Get and POST API returns correctly', function(){
 });
 ```
 
-#### 配置 mocha 配置文件
+#### Configuring mocha config files
 
-- 新建配置文件
+- Create a new mocha configuration file
 
 ```bash
-// 项目根目录下新建配置文件
+// create configuration file in the project root directory
 touch .mocharc.js
 ```
 
-- 更新配置文件
+- Updating configuration files
 
 ```javascript
 // mocha config
 module.exports = {
-    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
-    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+    timeout: 5000, // set the default timeout for test cases (milliseconds)
+    spec: ['Specs/**/*.js'], // specify the location of the test file
 };
 ```
 
-#### 调整测试脚本
+#### Updating test scripts for mocha
 
-在 package.json 文件中添加测试脚本
+Add test scripts to the package.json file
 
 ```json
 "scripts": {
@@ -355,103 +357,103 @@ module.exports = {
   },
 ```
 
-#### 运行测试用例
+#### Running test cases
 
 ```bash
-// 运行测试用例
+// run test cases
 npm run test
 ```
 
-#### 测试报告
+#### Test Report
 
-##### 命令行测试报告
+##### Terminal Test Report
 
 ![RbdVs7](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png)
 
-##### 集成 mochawesome 测试报告
+##### Integrated mochawesome test report
 
-- 安装 mochawesome
+- Install mochawesome library
 
 ```bash
 npm install --save-dev mochawesome
 ```
 
-- 更新 mocha 配置文件
+- Updating mocha configuration files
 
-> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+> You can refer to the demo project at<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
 ```javascript
 // mocha config
 module.exports = {
-    timeout: 5000, // 设置测试用例的默认超时时间（毫秒）
-    reporter: 'mochawesome', // 使用 mochawesome 报告生成器
+    timeout: 5000, // Set the default timeout for test cases (milliseconds)
+    reporter: 'mochawesome', // Use mochawesome as the test report generator
     'reporter-option': [
-        'reportDir=Report', // 报告生成路径
-        'reportFilename=[status]_[datetime]-[name]-report', //报告名称
-        'html=true', // 生成 html 格式报告
-        'json=false', // 不生成 json 格式报告
-        'overwrite=false', // 不覆盖已经存在的报告
-        'timestamp=longDate', // 给报告添加时间戳
+        'reportDir=Report', // Report directory
+        'reportFilename=[status]_[datetime]-[name]-report', //Report file name
+        'html=true', // enable html report
+        'json=false', // disable json report
+        'overwrite=false', // disable report file overwrite
+        'timestamp=longDate', // add timestamp to report file name
 
-    ], // 传递给报告生成器的参数
-    spec: ['Specs/**/*.js'], // 指定测试文件的位置
+    ], // mochawesome report generator options
+    spec: ['Specs/**/*.js'], // Specify the location of the test file
 };
 ```
 
-- 运行测试用例
+- Running test cases
 
 ```bash
-// 运行测试用例
+// Run test cases
 npm run test
 ```
 
-- 查看测试报告
+- View test report
 
-> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
+> Test report folder: Report, click to open the latest html report file with your browser
 
 ![BseOQ8](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png)
 
-### Jest 版本
+### Jest version
 
-可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+ You can refer to the demo project at<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
-#### 新建 Jest demo 项目文件夹
+#### Create a new jest project folder
 
 ```bash
 mkdir SuperTest-Jest-demo
 ```
 
-#### Jest demo 项目初始化
+#### Jest demo project initialization
 
 ```bash
-// 进入项目文件夹下
+// enter the project folder
 cd SuperTest-Mocha-demo
-// nodejs 项目初始化
+// nodejs project initialization
 npm init -y
 ```
 
-#### Jest demo 安装依赖
+#### Jest demo install dependencies
 
 ```bash
-// 安装 supertest
+// install supertest library
 npm install supertest --save-dev
-// 安装 Jest测试框架
+// install jest test framework
 npm install jest --save-dev
 ```
 
-#### 新建 Jest demo 项目的测试文件及测试用例
+#### Create new Jest demo project test folder and test cases
 
 ```bash
-// 新建测试文件夹
+// create test folder
 mkdir Specs
-// 新建测试用例文件
+// enter test folder and create test case file
 cd Specs
 touch test.spec.js
 ```
 
-#### 编写 Jest demo 测试用例
+#### Writing Jest demo Test Cases
 
-> 测试接口可参考项目中 demoAPI.md 文件
+> The test API can be found in the demoAPI.md file in the project.
 
 ```javascript
 const request = require('supertest');
@@ -492,28 +494,28 @@ describe('Verify that the Get and POST API returns correctly', () => {
 }); 
 ```
 
-#### 配置 Jest 配置文件
+#### Configuring Jest config files
 
-- 新建配置文件
+- Creating a new configuration file
 
 ```bash
-// 项目根目录下新建配置文件
+// Create a new configuration file in the project root directory
 touch jest.config.js
 ```
 
-- 更新配置文件
+- Updating configuration files
 
 ```javascript
 // Desc: Jest configuration file
 module.exports = {
-    // 测试文件的匹配规则
+    // Specify the location of the test file
     testMatch: ['**/Specs/*.spec.js'],
 };
 ```
 
-#### 调整 Jest 测试脚本
+#### Adapting Jest Test Scripts
 
-在 package.json 文件中添加测试脚本
+Add the test script to the package.json file
 
 ```json
 "scripts": {
@@ -521,83 +523,83 @@ module.exports = {
   },
 ```
 
-#### 运行 Jest 测试用例
+#### Runing test case
 
 ```bash
-// 运行测试用例
+// run test case
 npm run test
 ```
 
-#### Jest 测试报告
+#### Jest test report
 
-##### Jest 命令行测试报告
+##### Jest terminal Test Report
 
 ![ItJf6N](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png)
 
-##### 集成 jest-html-reporters 测试报告
+##### Integrating jest-html-reporters test reports
 
-- 安装 jest-html-reporters
+- Install jest-html-reporters library
 
 ```bash
 npm install --save-dev jest-html-reporters
 ```
 
-- 更新 Jest 配置文件
+- Updating jest configuration files
 
-> 可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+> You can refer to the demo project at<ttps://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
 ```javascript
 // Desc: Jest configuration file
 module.exports = {
-    // 测试文件的匹配规则
+    // specify the location of the test file
     testMatch: ['**/Specs/*.spec.js'],
-    // 测试报告生成器
+    // test report generator
     reporters: [
         'default',
         [
             'jest-html-reporters',
             {
-                publicPath: './Report', // 报告生成路径
-                filename: 'report.html', // 报告名称
-                pageTitle: 'SuperTest and Jest API Test Report', // 报告标题
-                overwrite: true, // 报告文件是否覆盖
-                expand: true, // 展开所有测试套件
+                publicPath: './Report', // report directory
+                filename: 'report.html', // report file name
+                pageTitle: 'SuperTest and Jest API Test Report', // report title
+                overwrite: true, // enable report file overwrite
+                expand: true, // enable report file expansion
             },
         ],
     ],
 };
 ```
 
-- 运行 Jest 测试用例
+- Running test cases
 
 ```bash
-// 运行测试用例
+// run test case
 npm run test
 ```
 
-- 查看测试报告
+- View test report
 
-> 测试报告文件夹：Report，点击使用浏览器打开最新 html 报告文件
+> Test report folder: Report, click on the browser to open the latest html report file
 
 ![12ZreT](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png)
 
-## 进阶用法
+## Advanced Usage
 
-### 持续集成
+### CI/CD integration
 
-#### 接入 github action
+#### Integration github action
 
-以 github action 为例，其他 CI 工具类似
+Use github action as an example, and other CI tools similarly
 
-##### Mocha 版本接入 github action
+##### The mocha version integration github action
 
-可参考 demo：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+See the demo at <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
 
-创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
+- Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.
 
-创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 mocha.yml。
+- Create a workflow file: Create a YAML-formatted workflow file, such as mocha.yml, in the .github/workflows directory.
 
-编辑 mocha.yml 文件：将以下内容复制到文件中
+- Edit the mocha.yml file: Copy the following into the file
   
 ```yaml
 name: RUN SuperTest API Test CI
@@ -645,20 +647,20 @@ jobs:
         path: Report
 ```
 
-- 提交代码：将 mocha.yml 文件添加到仓库中并提交。
-- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN SuperTest API Test CI 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
+- Commit the code: Add the mocha.yml file to your repository and commit.
+- View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the RUN SuperTest API Test CI workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
 
 ![dgfyaS](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dgfyaS.png)
 
-##### Jest 版本接入 github action
+##### The jest version integration github action
 
-可参考 demo：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+See the demo at <https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
 
-创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。
+- Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.
 
-创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 jest.yml。
+- Create a workflow file: Create a YAML-formatted workflow file, such as jest.yml, in the .github/workflows directory.
 
-编辑 jest.yml 文件：将以下内容复制到文件中
+- Edit the jest.yml file: Copy the following into the file
   
 ```yaml
 name: RUN SuperTest API Test CI
@@ -706,188 +708,188 @@ jobs:
           path: Report
 ```
 
-- 提交代码：将 jest.yml 文件添加到仓库中并提交。
-- 查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-SuperTest-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。
+- Commit the code: Add the jest.yml file to the repository and commit.
+- View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the RUN-SuperTest-API-Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.
 
 ![fqXy8o](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fqXy8o.png)
 
-### 常用断言
+### Common Assertions
 
-下面会一次介绍一下 SuperTest,CHAI 和 Jest 常用的断言。
+The following is an overview of common assertions used by SuperTest, CHAI and Jest.
 
-#### SuperTest 的内置断言
+#### SuperTest's built-in assertions
 
-Supertest 是基于[SuperAgent](https://github.com/ladjs/superagent) 构建的一个更高级的库，所以 Supertest 可以很轻松的使用 SuperAgent 的 HTTP 断言。
+Supertest is a more advanced library built on [SuperAgent](https://github.com/ladjs/superagent), so Supertest can easily use SuperAgent's HTTP assertions.
 
-示例如下：
-
-```javascript
-.expect(status[, fn]) //断言响应状态代码。
-
-.expect(status, body[, fn]) // 断言响应状态代码和正文。
-
-.expect(body[, fn]) // 用字符串、正则表达式或解析后的正文对象断言响应正文文本。
-
-.expect(field, value[, fn]) // 用字符串或正则表达式断言标题字段值。
-
-.expect(function(res) {}) // 传递一个自定义断言函数。它将得到要检查的响应对象。如果检查失败，则抛出错误。
-```
-
-#### CHAI 的常用断言
-
-- 相等性断言（Equality Assertions）
+Examples are as follows:
 
 ```javascript
-expect(actual).to.equal(expected) // 验证实际值是否等于期望值。
-expect(actual).to.deep.equal(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。
-expect(actual).to.eql(expected) // 与 deep.equal 一样，用于深度相等的比较。
+.expect(status[, fn]) // Assert response status code.
+
+.expect(status, body[, fn]) // Assert response status code and body.
+
+.expect(body[, fn]) // Assert response body text with a string, regular expression, or parsed body object.
+
+.expect(field, value[, fn]) // Assert header field value with a string or regular expression.
+
+.expect(function(res) {}) // Pass a custom assertion function. It'll be given the response object to check. If the check fails, throw an error.
 ```
 
-- 包含性断言（Inclusion Assertions）
+#### Common Assertions for CHAI
+
+- Equality Assertions
 
 ```javascript
-expect(array).to.include(value) // 验证数组是否包含指定的值。
-expect(string).to.include(substring) // 验证字符串是否包含指定的子字符串。
-expect(object).to.include(key) // 验证对象是否包含指定的键。
+expect(actual).to.equal(expected) // Verify that the actual value is equal to the expected value.
+expect(actual).to.deep.equal(expected) // Verify that the actual value is deeply equal to the expected value, for object and array comparisons.
+expect(actual).to.eql(expected) // Same as deep.equal for deep-equal comparisons.
 ```
 
-- 类型断言（Type Assertions）
+- Inclusion Assertions
 
 ```javascript
-expect(actual).to.be.a(type) // 验证实际值的类型是否等于指定类型。
-expect(actual).to.be.an(type) // 与 to.be.a 一样，用于类型断言。
-expect(actual).to.be.an.instanceof(constructor) // 验证实际值是否是指定构造函数的实例。
+expect(array).to.include(value) // Verify that the array contains the specified value.
+expect(string).to.include(substring) // Verify that the string contains the specified substring.
+expect(object).to.include(key) // Verify that the object contains the specified key.
 ```
 
-- 真假性断言（Truthiness Assertions）
+- Type Assertions
 
 ```javascript
-expect(value).to.be.true // 验证值是否为真。
-expect(value).to.be.false // 验证值是否为假。
-expect(value).to.exist // 验证值是否存在，非 null 和非 undefined。
+expect(actual).to.be.a(type) // Verify that the type of the actual value is equal to the specified type.
+expect(actual).to.be.an(type) // Same as to.be.a for type assertions.
+expect(actual).to.be.an.instanceof(constructor) // Verify that the actual value is an instance of the specified constructor.
 ```
 
-- 长度断言（Length Assertions）
+- Truthiness Assertions
 
 ```javascript
-expect(array).to.have.length(length) // 验证数组的长度是否等于指定长度。
-expect(string).to.have.lengthOf(length) // 验证字符串的长度是否等于指定长度。
+expect(value).to.be.true // Verify that the value is true.
+expect(value).to.be.false // Verify that the value is false.
+expect(value).to.exist // Verify that the value exists, is not null and is not undefined.
 ```
 
-- 空值断言（Empty Assertions）
+- Length Assertions
 
 ```javascript
-expect(array).to.be.empty // 验证数组是否为空。
-expect(string).to.be.empty // 验证字符串是否为空。
+expect(array).to.have.length(length) // Verify that the length of the array is equal to the specified length.
+expect(string).to.have.lengthOf(length) // Verify that the length of the string is equal to the specified length.
 ```
 
-- 范围断言（Range Assertions）
+- Empty Assertions
 
 ```javascript
-expect(value).to.be.within(min, max) // 验证值是否在指定的范围内。
-expect(value).to.be.above(min) // 验证值是否大于指定值。
-expect(value).to.be.below(max) // 验证值是否小于指定值。
+expect(array).to.be.empty // Verify if the array is empty.
+expect(string).to.be.empty // Verify that the string is empty.
 ```
 
-- 异常断言（Exception Assertions）
+- Range Assertions
 
 ```javascript
-expect(fn).to.throw(error) // 验证函数是否抛出指定类型的异常。
-expect(fn).to.throw(message) // 验证函数是否抛出包含指定消息的异常。
+expect(value).to.be.within(min, max) // Verify that the value is within the specified range.
+expect(value).to.be.above(min) // Verify that the value is greater than the specified value.
+expect(value).to.be.below(max) // Verify that the value is less than the specified value.
 ```
 
-- 存在性断言（Existence Assertions）
+- Exception Assertions
 
 ```javascript
-expect(object).to.have.property(key) // 验证对象是否包含指定属性。
-expect(array).to.have.members(subset) // 验证数组是否包含指定的成员。
+expect(fn).to.throw(error) // Verify that the function throws an exception of the specified type.
+expect(fn).to.throw(message) // Verify that the function throws an exception containing the specified message.
 ```
 
-更多 chai 的断言，请查看<https://www.chaijs.com/api/assert/>
-
-#### Jest 的常用断言
-
-- 相等性断言（Equality Assertions）
+- Existence Assertions
 
 ```javascript
-expect(actual).toBe(expected) // 验证实际值是否严格等于期望值。
-expect(actual).toEqual(expected) // 验证实际值和期望值是否深度相等，适用于对象和数组比较。
+expect(object).to.have.property(key) // Verify that the object contains the specified property.
+expect(array).to.have.members(subset) // Verify that the array contains the specified members.
 ```
 
-- 不相等性断言
+For more chai assertions, see <https://www.chaijs.com/api/assert/>
+
+#### Common Assertions for Jest
+
+- Equality Assertions
 
 ```javascript
-expect(actual).not.toBe(expected) // 验证实际值与期望值不相等。
+expect(actual).toBe(expected) // Verify that the actual value is strictly equal to the expected value.
+expect(actual).toEqual(expected) // Verify that the actual value is deeply equal to the expected value, for object and array comparisons.
 ```
 
-- 包含性断言（Inclusion Assertions）
+- Inequality Assertions
 
 ```javascript
-expect(array).toContain(value) // 验证数组是否包含指定的值。
+expect(actual).not.toBe(expected) // Verify that the actual value is not equal to the expected value.
 ```
 
-- 类型断言（Type Assertions）
+- Inclusion Assertions
 
 ```javascript
-expect(actual).toBeTypeOf(expected) // 验证实际值的类型是否等于指定类型。
+expect(array).toContain(value) // Verify that the array contains the specified value.
 ```
 
-- 真假性断言（Truthiness Assertions）
+- Type Assertions
 
 ```javascript
-expect(value).toBeTruthy() // 验证值是否为真。
-expect(value).toBeFalsy() // 验证值是否为假。
+expect(actual).toBeTypeOf(expected) // Verify that the type of the actual value is equal to the specified type.
 ```
 
-- 异步断言
+- Truthiness Assertions
 
 ```javascript
-await expect(promise).resolves.toBe(expected) // 验证异步操作是否成功完成并返回与期望值匹配的结果。
+expect(value).toBeTruthy() // Verify that the value is true.
+expect(value).toBeFalsy() // Verify that the value is false.
 ```
 
-- 异常断言
+- Asynchronous Assertions
 
 ```javascript
-expect(fn).toThrow(error) // 验证函数是否抛出指定类型的异常。
-expect(fn).toThrow(message) // 验证函数是否抛出包含指定消息的异常。
+await expect(promise).resolves.toBe(expected) // Verify that the asynchronous operation completed successfully and return a result matching the expected value.
 ```
 
-- 范围断言
+- Exception Assertions
 
 ```javascript
-expect(value).toBeGreaterThanOrEqual(min) // 验证值是否大于或等于指定的最小值。
-expect(value).toBeLessThanOrEqual(max) // 验证值是否小于或等于指定的最大值。
+expect(fn).toThrow(error) // Verify that the function throws an exception of the specified type.
+expect(fn).toThrow(message) // Verify that the function throws an exception containing the specified message.
 ```
 
-- 对象属性断言
+- Scope Assertions
 
 ```javascript
-expect(object).toHaveProperty(key, value) // 验证对象是否包含指定属性，并且该属性的值等于指定值。
+expect(value).toBeGreaterThanOrEqual(min) // Verify that the value is greater than or equal to the specified minimum.
+expect(value).toBeLessThanOrEqual(max) // Verify that the value is less than or equal to the specified maximum.
 ```
 
-更多 Jest 的断言，请查看<https://jestjs.io/docs/expect>
+- Object Property Assertions
 
-### 数据驱动
+```javascript
+expect(object).toHaveProperty(key, value) // Verify that the object contains the specified property and that the value of the property is equal to the specified value.
+```
 
-API 测试的数据驱动是一种测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。
+For more Jest assertions, see<https://jestjs.io/docs/expect>
 
-Mocha 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+### Data Driven
 
-Jest 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+Data-driven for API testing is a testing methodology in which the input data and expected output data for test cases are stored in data files, and the testing framework executes multiple tests against these data files to validate various aspects of the API. Data-driven testing can help you effectively cover multiple scenarios and ensure that the API works properly with a variety of input data.
 
-> mocha 版本和 Jest 版本类似，这里以 Mocha 版本为例
+The Mocha version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>.
 
-#### 新建测试配置文件
+The Jest version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>.
+
+> The mocha version is similar to the Jest version, so here is an example of the mocha version.
+
+#### Create test configuration files
 
 ```bash
-// 新建测试配置文件夹
+// create test configuration folder
 mkdir Config
-// 新建测试配置文件
+// create test configuration file
 cd Config
 touch config.js
 ```
 
-#### 编写测试配置文件
+#### Edit test configuration files
 
 ```javascript
 // Test config file
@@ -898,22 +900,22 @@ module.exports = {
 };
 ```
 
-#### 新建测试数据文件
+#### Create test data files
 
 ```bash
-// 新建测试数据文件夹
+// create test data folder
 mkdir testData
-// 进入测试数据文件夹
+// enter test data folder
 cd testData
-// 新建请求数据文件
+// create request data file
 touch requestData.js
-// 新建响应数据文件
+// create response data file
 touch responseData.js
 ```
 
-#### 编写测试数据文件
+#### Edit test data files
 
-- 编写请求数据文件
+- Edit request data files
 
 ```javascript
 // Test request data file
@@ -927,7 +929,7 @@ module.exports = {
 };
 ```
 
-- 编写响应数据文件
+- Edit response data files
 
 ```javascript
 // Test response data file
@@ -947,9 +949,9 @@ module.exports = {
 };
 ```
 
-#### 更新测试用例来支持数据驱动
+#### Update test cases to support data-driven
 
-> 为做区分，这里新建测试用例文件，文件名为 dataDrivingTest.spec.js
+> To differentiate, create a new test case file named dataDrivingTest.spec.js.
 
 ```javascript
 // Test: dataDrivingTest.spec.js
@@ -995,41 +997,41 @@ describe('Data Driving-Verify that the Get and POST API returns correctly', func
 });
 ```
 
-#### 运行该测试用例确认数据驱动是否生效
+#### Run the test case to check whether the data driver is effective.
 
-> 若用 demo 项目运行数据驱动支持测试用例：dataDrivingTest.spec.js，建议先屏蔽掉 test.spec.js 测试用例，否则会报错
+> If you run the data driver support test case: dataDrivingTest.spec.js with the demo project, it is recommended to skip the test.spec.js test case first, otherwise it will report an error.
 
 ![OCDzLr](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OCDzLr.png)
 
-### 多环境支持
+### Multiple Environment Support
 
-在使用 Jest 或 Mocha 进行 API 测试时，你可能需要支持测试不同的环境，例如开发环境、测试环境和生产环境。这可以通过配置不同的测试脚本和环境变量来实现。
+When using Jest or Mocha for API testing, you may need to support testing different environments, such as development, test and production environments. This can be achieved by configuring different test scripts and environment variables.
 
-下面会简单描述一下如何在 Jest 和 Mocha 中配置多环境支持，会以支持两个环境来进行 demo 演示。
+The following is a brief description of how to configure multi-environment support in Jest and Mocha, with a demo demonstrating support for two environments.
 
-Mocha 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>
+Mocha version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo>.
 
-Jest 版本可参考 demo 项目：<https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>
+The Jest version can be found in the demo project: <https://github.com/Automation-Test-Starter/SuperTest-Jest-demo>.
 
-> mocha 版本和 Jest 版本类似，这里以 Mocha 版本为例
+> The mocha version is similar to the Jest version, so here is an example of the mocha version.
 
-#### 新建多环境测试配置文件
+#### Create Multi-Environment Test Configuration File
 
 ```bash
-// 新建测试配置文件夹 若已有则不用新建
+// create test configuration folder, if already exists, skip this step
 mkdir Config
-// 新建测试环境测试配置文件
+// create test configuration file for test environment
 cd Config
 touch testConfig-test.js
-// 新建开发环境测试配置文件
+// create test configuration file for dev environment
 touch testConfig-dev.js
 ```
 
-#### 编写多环境测试配置文件
+#### Edit Multi-Environment Test Configuration File
 
-- 编写测试环境测试配置文件
+- edit test configuration file for test environment: testConfig-test.js
 
-> 根据实际情况编写测试环境测试配置文件
+> based on actual situation, edit test configuration file for test environment
 
 ```javascript
 // Test config file for test environment
@@ -1040,9 +1042,9 @@ module.exports = {
 };
 ```
 
-- 编写开发环境测试配置文件
+- edit test configuration file for dev environment: testConfig-dev.js
 
-> 根据实际情况编写开发环境测试配置文件
+> based on actual situation, edit test configuration file for dev environment
 
 ```javascript
 // Test config file for dev environment
@@ -1053,28 +1055,28 @@ module.exports = {
 };
 ```
 
-#### 新建多环境测试数据文件
+#### Create Multi-Environment Test Data File
 
 ```bash
-// 新建测试数据文件夹 若已有则不用新建
+// create test data folder, if already exists, skip this step
 mkdir testData
-// 进入测试数据文件夹
+// enter test data folder
 cd testData
-// 新建测试环境请求数据文件
+// create request data file for test environment
 touch requestData-test.js
-// 新建测试环境响应数据文件
+// create response data file for test environment
 touch responseData-test.js
-// 新建开发环境请求数据文件
+// create request data file for dev environment
 touch requestData-dev.js
-// 新建开发环境响应数据文件
+// create response data file for dev environment
 touch responseData-dev.js
 ```
 
-#### 编写多环境测试数据文件
+#### Edit Multi-Environment Test Data File
 
-- 编写测试环境请求数据文件
+- edit request data file for test environment: requestData-test.js
 
-> 根据实际情况编写测试环境请求数据文件
+> based on actual situation, edit request data file for test environment
 
 ```javascript
 // Test request data file for test environment
@@ -1088,9 +1090,9 @@ module.exports = {
 };
 ```
 
-- 编写测试环境响应数据文件
+- edit response data file for test environment: responseData-test.js
 
-> 根据实际情况编写测试环境响应数据文件
+> based on actual situation, edit response data file for test environment
 
 ```javascript
 // Test response data file for test environment
@@ -1110,9 +1112,9 @@ module.exports = {
 };
 ```
 
-- 编写开发环境请求数据文件
+- edit request data file for dev environment: requestData-dev.js
 
-> 根据实际情况编写开发环境请求数据文件
+> based on actual situation, edit request data file for dev environment
 
 ```javascript
 // Test request data file for dev environment
@@ -1126,9 +1128,9 @@ module.exports = {
 };
 ```
 
-- 编写开发环境响应数据文件
+- edit response data file for dev environment: responseData-dev.js
 
-> 根据实际情况编写开发环境响应数据文件
+> based on actual situation, edit response data file for dev environment
 
 ```javascript
 // Test response data file for dev environment
@@ -1148,9 +1150,9 @@ module.exports = {
 };
 ```
 
-#### 更新测试用例来支持多环境
+#### Update test cases to support multiple environments
 
-> 为做区分，这里新建测试用例文件，文件名为 multiEnvTest.spec.js
+> To differentiate, here is a new test case file named multiEnvTest.spec.js
 
 ```javascript
 // Test: multiEnvTest.spec.js
@@ -1196,21 +1198,21 @@ describe('multiEnv-Verify that the Get and POST API returns correctly', function
 });
 ```
 
-#### 更新测试脚本来支持多环境
+#### Update test scripts to support multiple environments
 
 '''json
 // package.json
 "scripts": {
-    "test": "NODE_ENV=test mocha" // 运行测试环境测试脚本
-    "dev": "NODE_ENV=dev mocha" // 运行 dev 环境测试脚本
+    "test": "NODE_ENV=test mocha" // run test script for test environment
+    "dev": "NODE_ENV=dev mocha" //  run test script for dev environment
   },
 '''
 
-#### 运行该测试用例确认多环境支持是否生效
+#### Run the test case to check if the multi environment support is working.
 
-> 若用 demo 项目运行多环境支持测试用例：multiEnvTest.spec.js，建议先屏蔽掉 dataDrivingTest.spec.js 和 test.spec.js 测试用例，否则会报错
+> If you use demo project to run multi-environment support test case: multiEnvTest.spec.js, it is recommended to block dataDrivingTest.spec.js and test.spec.js test cases first, otherwise it will report an error.
 
-- 运行测试环境测试脚本
+- Run the test environment test script
 
 ```bash
 npm run test
@@ -1218,7 +1220,7 @@ npm run test
 
 ![OMbN1v](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OMbN1v.png)
 
-- 运行开发环境测试脚本
+- Run the dev environment test script
 
 ```bash
 npm run dev
